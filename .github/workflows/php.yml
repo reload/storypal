@@ -6,7 +6,7 @@ jobs:
     name: Composer validate
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: shivammathur/setup-php@v2
       with:
         php-version: 7.4
@@ -20,7 +20,7 @@ jobs:
     name: Lint PHP
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Setup PHP, with composer and extensions
       uses: shivammathur/setup-php@v2
       with:
@@ -39,7 +39,7 @@ jobs:
     name: analyse
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup PHP, with composer and extensions
         uses: shivammathur/setup-php@v2
         with:
