@@ -1,0 +1,108 @@
+// We need to disable ImportantRule as this has crazy nesting in Drupal.
+// scss-lint:disable SelectorFormat ImportantRule
+.is-admin-page {
+
+  .form-actions {
+    .button {
+      padding: 10px !important;
+    }
+
+    .action-link {
+      padding: 6px 10px !important;
+    }
+
+    .action-link.action-link--icon-trash {
+      min-height: 0 !important;
+    }
+  }
+
+  .file-operations-cell {
+    width: auto !important;
+  }
+
+  .paragraphs-add-dialog--categorized .paragraphs-label {
+    text-overflow: initial !important;
+    white-space: normal !important;
+  }
+
+  .paragraphs-add-dialog--categorized .search-description label {
+    color: $color__text !important;
+  }
+
+  .views-field-media-bulk-form {
+    height: 60px;
+    background-color: transparentize($color__main, 0.5);
+    border: 2px solid $color__main;
+    border-bottom: 0;
+  }
+
+  .media-form .focal-point-preview-link {
+    height: 60px;
+    display: block;
+    line-height: 60px;
+    text-decoration: none;
+  }
+
+  .field--widget-media-library-widget {
+    max-width: $width--max;
+  }
+
+  .field--name-moderation-state {
+    .form-item__label {
+      display: block;
+    }
+  }
+
+  // Hide various things, to make the admin interface simpler for non-admins.
+  &.has-simple-admin {
+    [data-drupal-selector^="menu-link-content-"] {
+      .field--name-description,
+      .field--name-expanded,
+      .field--name-weight {
+        display: none;
+      }
+    }
+
+    .filter-wrapper .filter-help,
+    .gin--edit-form .gin-sidebar {
+      display: none;
+    }
+  }
+}
+
+.cke {
+  max-width: 100%;
+}
+
+.gin--edit-form {
+  .entity-meta__header {
+    padding-top: 0;
+  }
+
+  .form-actions {
+    @include spacing-property("padding-top");
+    @include spacing-property("padding-left");
+    @include spacing-property("padding-right");
+
+    margin: 0;
+    box-sizing: border-box;
+
+    .form-submit,
+    .action-link {
+      margin: 0.3rem;
+      box-shadow: none;
+    }
+  }
+
+  .publish.button {
+    background-color: $color__ok;
+    border-color: $color__ok !important;
+
+    &:hover {
+      background-color: darken($color__ok, 5%);
+      border-color: darken($color__ok, 5%) !important;
+    }
+  }
+}
+
+// scss-lint:enable SelectorFormat ImportantRule

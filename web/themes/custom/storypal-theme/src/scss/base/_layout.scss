@@ -1,0 +1,48 @@
+img {
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+iframe {
+  width: 100%;
+  max-width: 100%;
+  border: 0;
+}
+
+%layout__unit {
+  @include layout-unit();
+}
+
+%layout__unit--max-width {
+  max-width: $width--component;
+}
+
+%layout__unit--max-width-wide {
+  max-width: $width--component--wide;
+}
+
+.layout__unit {
+  @extend %layout__unit;
+
+  &--max-width {
+    @extend %layout__unit--max-width;
+  }
+
+  &--max-width-wide {
+    @extend %layout__unit--max-width-wide;
+  }
+
+  &--padding {
+    @include spacing-property("padding-top");
+    @include spacing-property("padding-bottom");
+  }
+
+  // Any layout units within layout units should not have padding.
+  .layout__unit {
+    @include spacing-property("padding-left", "none");
+    @include spacing-property("padding-right", "none");
+  }
+}

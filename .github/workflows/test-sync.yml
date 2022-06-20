@@ -1,0 +1,17 @@
+name: "Sync to test branch/platform.sh site"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: repo-sync
+        uses: repo-sync/github-sync@v2
+        with:
+          source_repo: "https://${{ secrets.REPO_SYNC_TOKEN }}@github.com/${{ github.repository }}.git"
+          source_branch: "main"
+          destination_branch: "test"
+          github_token: ${{ secrets.REPO_SYNC_TOKEN }}

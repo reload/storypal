@@ -1,0 +1,39 @@
+{% set teasers_count = teasers|length %}
+<div class="layout__unit layout__unit--max-width">
+  <div {{ attributes.addClass('article-list') }}>
+    {% if title %}
+      <h3 class="typo__teaser-title">
+        {{ title }}
+      </h3>
+    {% endif %}
+
+    <ul class="article-list__teasers">
+      {% if teasers_count > 5 %}
+        <div class="summary js-summary">
+          <div class="summary__content">
+            {% for teaser in teasers %}
+              <li>{{ teaser }}</li>
+            {% endfor %}
+          </div>
+          <div class="summary__actions js-summary-actions">
+            <a href="#" class="summary__toggle summary__toggle--expand typo__teaser-title" role="button">
+              {{ 'See more'|trans }}
+              <svg width="24" height="24" viewBox="0 0 12 12" fill="#e5007d" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.99992 3L4.29492 3.705L6.58492 6L4.29492 8.295L4.99992 9L7.99992 6L4.99992 3Z"/>
+              </svg>            </a>
+            <a href="#" class="summary__toggle summary__toggle--collapse typo__teaser-title" role="button">
+              {{ 'See less'|trans }}
+              <svg width="24" height="24" viewBox="0 0 12 12" fill="#e5007d" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.99992 3L4.29492 3.705L6.58492 6L4.29492 8.295L4.99992 9L7.99992 6L4.99992 3Z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      {% else %}
+        {% for teaser in teasers %}
+          <li>{{ teaser }}</li>
+        {% endfor %}
+      {% endif %}
+    </ul>
+  </div>
+</div>

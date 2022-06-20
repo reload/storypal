@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Base module for Storypal Base.
+ */
+
+/**
+ * Implements hook_page_attachments().
+ *
+ * Loading Storypal admin assets for logged in users.
+ */
+function storypal_base_page_attachments(array &$page) {
+  if (\Drupal::currentUser()->isAuthenticated()) {
+    $page['#attached']['library'][] = 'storypal_theme/admin';
+  }
+}
+
+/**
+ * Implements template_preprocess_html().
+ *
+ * Sets a classes to inform admin.scss.
+ */
+function storypal_base_preprocess_html(&$variables) {
+  if (!\Drupal::service('router.admin_context')->isAdminRoute()) {
+    return;
+  }
+
+  $variables['attributes']['class'][] = 'is-admin-page';
+
+  if (!\Drupal::currentUser()->hasPermission('storypal advanced admin')) {
+    $variables['attributes']['class'][] = 'has-simple-admin';
+  }
+}

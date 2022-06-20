@@ -1,0 +1,19 @@
+base:
+  version: '1.0'
+  css:
+    theme:
+      dist/css/storypal_theme.bundle.css: {}
+      dist/css/storypal_theme.print.css: {}
+  js:
+    dist/js/storypal_theme.polyfills.js: { }
+  dependencies:
+    - core/drupal
+
+admin:
+  version: '1.0'
+  css:
+    theme:
+      dist/css/storypal_theme.admin.css: {}
+  js:
+    dist/js/storypal_theme.admin.drag-buttons.js: { }
+    dist/js/storypal_theme.admin.js: { }

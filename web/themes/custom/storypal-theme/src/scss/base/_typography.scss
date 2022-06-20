@@ -1,0 +1,81 @@
+body {
+  @include typography($typo__body);
+
+  color: $color__text;
+
+  // Tweaks to make the font smoothing better.
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-shadow: none;
+
+  word-break: break-word;
+  hyphens: auto;
+
+  // stylelint-disable property-no-unknown
+  font-smoothing: antialiased;
+  // stylelint-enable property-no-unknown
+
+  @include media-query__tablet {
+    hyphens: none;
+  }
+}
+
+a {
+  color: $color__text--link;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:visited,
+  &:active {
+    color: $color__text--link;
+    text-decoration: none;
+  }
+}
+
+.typo__margin {
+  @include spacing-property("margin-bottom", "small");
+
+  display: block;
+}
+
+.typo__large-margin {
+  @include spacing-property("margin-bottom", "large");
+
+  display: block;
+}
+
+.typo__small-margin {
+  @include spacing-property("margin-bottom", "tiny");
+
+  display: block;
+}
+
+.typo__no-margin {
+  margin: 0;
+}
+
+.typo__hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  width: 0;
+  height: 0;
+}
+
+.typo__max-width {
+  max-width: $typo__max-width;
+}
+
+.typo__light-text {
+  @include typo__light-text;
+}
+
+.typo__dark-text {
+  @include typo__dark-text;
+}
+
+.typo__active-color {
+  color: $color__text--active;
+}

@@ -1,0 +1,155 @@
+# This file describes an application. You can have multiple applications
+# in the same project.
+
+# The name of this app. Must be unique within a project.
+name: 'drupal'
+
+# The runtime the application uses.
+type: "php:7.4"
+
+runtime:
+  extensions:
+    - newrelic
+    - redis
+
+# Configuration of the build of this application.
+build:
+  flavor: composer
+
+# The build-time dependencies of the app.
+dependencies:
+  php:
+    "composer/composer": '^2.0'
+
+# The relationships of the application with services or other applications.
+# The left-hand side is the name of the relationship as it will be exposed
+# to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
+# side is in the form `<service name>:<endpoint name>`.
+relationships:
+  database: "mysqldb:mysql"
+  redis: "rediscache:redis"
+
+# The configuration of app when it is exposed to the web.
+web:
+  # Specific parameters for different URL prefixes.
+  locations:
+    "/":
+      # The folder to serve static assets for this location from.
+      # (Relative to the application root.)
+      root: "web"
+
+      # How long to allow static assets from this location to be cached.
+      # (Can be a time or -1 for no caching. Times can be suffixed with
+      # "ms" (milliseconds), "s" (seconds), "m" (minutes), "h" (hours),
+      # "d" (days), "w" (weeks), "M" (months, 30d) or "y" (years, 365d).)
+      expires: 1d
+
+      # Whether to forward disallowed and missing resources from this
+      # location to the application.
+      # (Can be true, false or a URI path string.)
+      passthru: "/index.php"
+
+      # Deny access to static files in this location.
+      allow: false
+
+      # Rules for specific URI patterns.
+      rules:
+        # Allow access to common static files.
+        '\.(jpe?g|png|gif|svgz?|css|js|map|ico|bmp|eot|woff2?|otf|ttf|webmanifest)$':
+          allow: true
+        '^/robots\.txt$':
+          allow: true
+        '^/sitemap\.xml$':
+          allow: true
+
+    '/sites/default/files':
+      # Allow access to all files in the public files directory.
+      allow: true
+      expires: 7d
+      passthru: '/index.php'
+      root: 'web/sites/default/files'
+
+      # Do not execute PHP scripts.
+      scripts: false
+
+      rules:
+        # Provide a longer TTL (2 weeks) for aggregated CSS and JS files.
+        '^/sites/default/files/(css|js)':
+          expires: 2w
+    # Start off with script-paths we're going to deny.
+    # Don't attempt to handle these as rules in "/" as any denied file will be passed to the fallback (index.php)
+    # which will then just include it.
+    "/core/install.php":
+      allow: false
+    "/install.php":
+      allow: false
+
+# The size of the persistent disk of the application (in MB).
+disk: 3072
+
+# The mounts that will be performed when the package is deployed.
+mounts:
+  "/web/sites/default/files": "shared:files/files"
+  "/tmp": "shared:files/tmp"
+  "/private": "shared:files/private"
+
+# The hooks executed at various points in the lifecycle of the application.
+hooks:
+  # Build theme assets.
+  build: |
+    unset NPM_CONFIG_PREFIX
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | dash
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    nvm current
+    nvm install 16
+    (cd "$PLATFORM_DOCUMENT_ROOT/../" && npm install && npm run build)
+    curl -sS https://platform.sh/cli/installer | php
+
+
+  # We run deploy hook after your application has been deployed and started.
+  deploy: |
+    cd "$PLATFORM_DOCUMENT_ROOT"
+    drush --yes deploy
+    drush locale-import da modules/custom/storypal_base/translations/da.po
+    drush --yes cache:rebuild
+
+# The configuration of scheduled execution.
+crons:
+  drupal:
+    spec: "*/5 * * * *"
+    cmd: |
+      cd "$PLATFORM_DOCUMENT_ROOT"
+      drush core:cron --uri=$(platform route:get --primary --property=url)
+
+  snapshot:
+    spec: '15 0 * * *'
+    cmd: |
+      if [ "$PLATFORM_BRANCH" = "main" ]; then
+          platform snapshot:create --yes --no-wait
+      fi
+
+  renewcert:
+    # Force a redeploy at 3 am (UTC) on the 1st and 15th of every month.
+    spec: '0 3 1,15 * *'
+    cmd: |
+      if [ "$PLATFORM_BRANCH" = main ] || [ "$PLATFORM_BRANCH" = "test" ]; then
+          platform redeploy --yes --no-wait
+      fi
+
+  sync-test-site:
+    # Sync fresh data to test site once a week (Saturday night)
+    spec: '0 4 * * 0'
+    cmd: |
+      if [ "$PLATFORM_BRANCH" = "test" ]; then
+            platform sync data --no-wait
+      fi
+
+  upate-translations:
+    # Import new translations every night at 2AM.
+    spec: "0 2 * * *"
+    cmd: |
+      cd "$PLATFORM_DOCUMENT_ROOT"
+      drush locale:check
+      drush locale:update
+      drush locale-import da modules/custom/storypal_base/translations/da.po

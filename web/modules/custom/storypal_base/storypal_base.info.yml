@@ -1,0 +1,7 @@
+type: module
+name: Storypal base
+description: 'Base functions for the Drupal boilerplate, Storypal, such as translations'
+package: storypal
+core_version_requirement: ^9
+'interface translation project': storypal_base
+'interface translation server pattern': modules/custom/storypal_base/translations/%language.po

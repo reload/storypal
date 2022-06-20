@@ -1,0 +1,3 @@
+storypal advanced admin:
+  title: 'StoryPal: Show advanced fields'
+  description: 'If a user *dont* have this permission, certain items may be hidden in the backend.'

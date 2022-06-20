@@ -1,0 +1,24 @@
+storypal_theme.mobile:
+  label: mobile
+  mediaQuery: ''
+  weight: 0
+  multipliers:
+    - 1x
+storypal_theme.tablet:
+  label: tablet
+  mediaQuery: 'all and (min-width: 768px)'
+  weight: 3
+  multipliers:
+    - 1x
+storypal_theme.tablet-landscape:
+  label: tablet-landscape
+  mediaQuery: 'all and (min-width: 1024px)'
+  weight: 4
+  multipliers:
+    - 1x
+storypal_theme.desktop:
+  label: desktop
+  mediaQuery: 'all and (min-width: 1200px)'
+  weight: 5
+  multipliers:
+    - 1x

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ruleset>
+  <arg name="extensions" value="php,module,inc,install,test,profile,theme,css,info,txt,md,yml"/>
+  <file>web/modules/custom</file>
+  <file>web/themes/custom</file>
+  <!-- Ignore generated assets. -->
+  <exclude-pattern>web/themes/custom/storypal_theme/dist</exclude-pattern>
+  <exclude-pattern>web/themes/custom/storypal_theme/node_modules</exclude-pattern>
+  <rule ref="Drupal">
+    <!-- Skip warnings about info file keys that's added by drupal.org. -->
+    <exclude name="Drupal.InfoFiles.AutoAddedKeys"/>
+  </rule>
+  <rule ref="DrupalPractice"/>
+</ruleset>

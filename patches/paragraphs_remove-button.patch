@@ -1,0 +1,14 @@
+diff --git a/src/Plugin/Field/FieldWidget/ParagraphsWidget.php b/src/Plugin/Field/FieldWidget/ParagraphsWidget.php
+index 5646165..6836ef9 100644
+--- a/src/Plugin/Field/FieldWidget/ParagraphsWidget.php
++++ b/src/Plugin/Field/FieldWidget/ParagraphsWidget.php
+@@ -633,6 +633,9 @@ class ParagraphsWidget extends WidgetBase {
+               'class' => ['button--small'],
+             ],
+           ];
++
++          // Storypal custom patch:
++          $widget_actions['actions']['remove_button'] = $widget_actions['dropdown_actions']['remove_button'];
+         }
+
+         if ($item_mode == 'edit') {

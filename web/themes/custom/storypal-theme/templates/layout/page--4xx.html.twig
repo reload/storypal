@@ -1,0 +1,18 @@
+{% extends '@storypal_theme/layout/page.html.twig' %}
+
+{% block content %}
+  <div class="typo__margin">
+    {{ page.highlighted }}
+    {{ page.help }}
+    {{ page.content|without('storypal_theme_content') }}
+  </div>
+  <div class="layout__unit layout__unit--padding">
+    <h1 class="typo__title typo__margin">
+      {{ 'We could not find what you requested'|trans }}
+    </h1>
+
+    <p>
+      {{ "We have recently rebuilt the website, meaning some contents might have changed locations."|trans }}
+    </p>
+  </div>
+{% endblock %}

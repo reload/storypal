@@ -1,0 +1,8 @@
+{% set classes = [
+  'mini-tag',
+  type ? 'mini-tag--' ~ type : '',
+  size ? 'mini-tag--' ~ size : ''
+] %}
+<small {{ attributes.addClass(classes) }}>
+  {{ title }}
+</small>

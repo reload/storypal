@@ -1,0 +1,56 @@
+on: pull_request
+name: Validate
+
+jobs:
+  composer_validate:
+    name: Composer validate
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: shivammathur/setup-php@v2
+      with:
+        php-version: 7.4
+        tools: composer
+        coverage: none
+    - name: Composer validate
+      run: |
+        composer validate --no-check-all --no-check-publish
+
+  phpcs:
+    name: Lint PHP
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup PHP, with composer and extensions
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 7.4
+        tools: composer
+        coverage: none
+    - name: Install dependencies
+      run: |
+        composer install --no-interaction --no-progress
+    - name: Run phpcs
+      uses: reload/action-phpcs@main
+      with:
+        reviewdog_token: ${{ secrets.GITHUB_TOKEN }}
+
+  phpstan:
+    name: analyse
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup PHP, with composer and extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          coverage: none
+          tools: composer:v2
+      - name: Install dependencies
+        run: |
+          composer install --no-interaction --no-progress
+          # Add vendor/bin to PATH for subsequent steps, see https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#adding-a-system-path
+          composer config bin-dir --absolute >> "${GITHUB_PATH}"
+      - name: PHPStan analyse
+        run: |
+          phpstan

@@ -1,0 +1,26 @@
+$width--max: 1430px;
+$width--component: 644px;
+$width--component--wide: 748px;
+
+$breakpoints: (
+  "mobile": 0,
+  "mobile-large": 600px,
+  "tablet": 768px,
+  "tablet-landscape": 1024px,
+  "desktop": 1200px,
+  "desktop-large": $width--max,
+);
+
+$z-indexes: (
+  "content": 10,
+  "content-overlay": 15,
+  "header": 20,
+  "overlay": 30,
+);
+
+$spacing--tiny: 8px;
+$spacing--mini: 16px;
+$spacing--small: 24px;
+$spacing--medium: 32px;
+$spacing--large: 48px;
+$spacing--x-large: 64px;
