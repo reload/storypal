@@ -1,0 +1,26 @@
+name: Storypal-theme
+type: theme
+base theme: classy
+description: 'Theme for the boilerplate installation, Storypal'
+package: storypal
+version: 0.1
+core_version_requirement: ^9
+
+libraries:
+  - storypal_theme/base
+
+regions:
+  header: 'Header'
+  content: 'Content'
+  footer: 'Footer'
+
+ckeditor_stylesheets:
+  - dist/css/storypal_theme.ckeditor.css
+
+component-libraries:
+  storybook:
+    paths:
+      - components
+
+libraries-override:
+  classy/base: false

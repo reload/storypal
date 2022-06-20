@@ -1,0 +1,8 @@
+# Defining what kind of Drupal configuration files should be hidden in PR.
+# These files can still be seen in the PR, but will be folded together.
+
+# Hiding the view displays, as this is visible through Drupal-regression.
+core.entity_view_display.*.yml linguist-generated
+
+# Hiding the form display, as it's an unreadable mess of 'weights'
+core.entity_view_display.*.yml linguist-generated

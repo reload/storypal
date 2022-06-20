@@ -1,0 +1,44 @@
+name: 'Chromatic Deployment'
+# the event that will trigger the action
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [ready_for_review, opened, synchronize]
+
+# what the action will do
+jobs:
+  # Deploy Chromatic
+  chromatic:
+    # Dont run action if the pull request is a draft.
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm install
+      - run: npm run build
+      - run: npm run build-storybook
+      # Chromatic deployment
+      - uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          storybookBuildDir: storybook-static
+          token: ${{ secrets.GITHUB_TOKEN }}
+          workingDir: ./

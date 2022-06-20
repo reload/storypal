@@ -1,0 +1,13 @@
+status: true
+dependencies: {  }
+name: focal_point_preview
+label: 'Focal point preview'
+effects:
+  912c8ac9-78a4-4eb0-97b3-3985a7d290ac:
+    uuid: 912c8ac9-78a4-4eb0-97b3-3985a7d290ac
+    id: image_scale
+    weight: 1
+    data:
+      width: 500
+      height: null
+      upscale: true

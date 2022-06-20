@@ -1,0 +1,40 @@
+{% extends '@storypal_theme/layout/page.html.twig' %}
+
+{% block content %}
+  <div class="typo__margin">
+    {{ page.highlighted }}
+    {{ page.help }}
+    {{ page.content|without('storypal_theme_content') }}
+  </div>
+  <div class="layout__unit layout__unit--padding">
+    <h1 class="typo__margin">
+      {{ 'You dont have access to this page'|trans }}
+    </h1>
+
+    <p>
+      {{ "You have tried to access a page that you dont have access to."|trans }}
+    </p>
+
+    {% if logged_in %}
+      <p>
+        {{ "You are logged in as:"|trans }} <strong>{{ user.getEmail() }}</strong>
+        <br>
+        {{ "You might need to log into another account."|trans }}
+      </p>
+      <p>
+        <a href="{{ path('user.logout') }}">{{ 'Logout'|trans }}</a>
+      </p>
+    {% else %}
+      <div class="typo__large-margin">
+        <p>
+          {{ "You might have to login to see the content:"|trans }}
+        </p>
+
+        <p>
+          <a href="{{ path('user.login') }}">{{ 'Login'|trans }}</a>
+        </p>
+      </div>
+    {% endif %}
+
+  </div>
+{% endblock %}

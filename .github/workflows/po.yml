@@ -1,0 +1,14 @@
+on: pull_request
+
+name: Translation
+
+jobs:
+  po-validate:
+    name: po files
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install gettext / msgfmt
+      run: sudo apt-get install gettext
+    - name: Validate PO file
+      run: msgfmt --check-format --check-domain web/modules/custom/storypal_base/translations/da.po

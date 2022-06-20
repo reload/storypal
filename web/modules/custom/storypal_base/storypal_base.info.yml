@@ -1,0 +1,10 @@
+type: module
+name: StoryPal base
+description: 'Base functions for the Drupal boilerplate, StoryPal, such as translations'
+package: storypal
+core_version_requirement: ^9
+'interface translation project': storypal_base
+'interface translation server pattern': modules/custom/storypal_base/translations/%language.po
+dependencies:
+  - focal_point:focal_point
+  - gzip_html:gzip_html

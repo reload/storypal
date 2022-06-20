@@ -1,0 +1,229 @@
+<?php
+
+/**
+ * @file
+ * Storypal-theme functions.
+ */
+
+/**
+ * Implements theme_page_attachments_alter().
+ *
+ * Replace missing opengraph / twitter properties with fallback.
+ */
+function storypal_theme_page_attachments_alter(array &$page) {
+  // See if a OG image is set in html_head.
+  $og_image = array_search('og_image', array_column($page['#attached']['html_head'], '1'));
+  $og_image_alt = array_search('og_image_0', array_column($page['#attached']['html_head'], '1'));
+
+  if ($og_image === FALSE && $og_image_alt === FALSE) {
+    $page['#attached']['html_head'][] = [
+      [
+        '#tag' => 'meta',
+        '#attributes' => [
+          'property' => 'og:image',
+          'content' => '/themes/custom/toybox/dist/images/metatag_opengraph.jpg',
+        ],
+      ],
+      'og_image',
+    ];
+
+    $page['#attached']['html_head'][] = [
+      [
+        '#tag' => 'meta',
+        '#attributes' => [
+          'property' => 'og:image:width',
+          'content' => '1200',
+        ],
+      ],
+      'og_image_width',
+    ];
+
+    $page['#attached']['html_head'][] = [
+      [
+        '#tag' => 'meta',
+        '#attributes' => [
+          'property' => 'og:image:height',
+          'content' => '630',
+        ],
+      ],
+      'og_image_height',
+    ];
+  }
+
+  // See if a OG image is set in html_head.
+  $twitter_image = array_search('twitter_cards_image', array_column($page['#attached']['html_head'], '1'));
+
+  if ($twitter_image === FALSE) {
+    $page['#attached']['html_head'][] = [
+      [
+        '#tag' => 'meta',
+        '#attributes' => [
+          'property' => 'twitter:image',
+          'content' => '/themes/custom/toybox/dist/images/metatag_twitter.jpg',
+        ],
+      ],
+      'twitter_cards_image',
+    ];
+  }
+
+}
+
+/**
+ * Implements THEME_preprocess_html().
+ *
+ * Loading additional webassets (fonts, favicons etc.)
+ */
+function storypal_theme_preprocess_html(&$variables) {
+  $theme_location = '/' . \Drupal::service('extension.list.theme')->getPath('storypal_theme');
+
+  // Adding main fonts for preloading.
+  $fonts_location = $theme_location . '/dist/fonts';
+  $fonts_tags = [
+    [
+      [
+        '#tag' => 'link',
+        '#attributes' => [
+          'rel' => 'preload',
+          'href' => $fonts_location . '/quatroslab_regular-webfont.woff2',
+          'as' => 'font',
+          'crossorigin' => TRUE,
+          'type' => 'font/woff2',
+        ],
+      ],
+      'font-quatro-slab-normal',
+    ],
+  ];
+
+  // Adding favicons / media icons for applications/shortcuts.
+  // See https://realfavicongenerator.net/
+  $favicons_location = $theme_location . '/favicons';
+  $favicon_tags = [
+    [
+      [
+        '#tag' => 'link',
+        '#attributes' => [
+          'rel' => 'apple-touch-icon',
+          'sizes' => '180x180',
+          'href' => $favicons_location . '/apple-touch-icon.png',
+        ],
+      ],
+      'apple-touch-icon',
+    ],
+    [
+      [
+        '#tag' => 'link',
+        '#attributes' => [
+          'rel' => 'icon',
+          'type' => 'image/png',
+          'sizes' => '16x16',
+          'href' => $favicons_location . '/favicon-16x16.png',
+        ],
+      ],
+      'icon16x16',
+    ],
+    [
+      [
+        '#tag' => 'link',
+        '#attributes' => [
+          'rel' => 'icon',
+          'type' => 'image/png',
+          'sizes' => '32x32',
+          'href' => $favicons_location . '/favicon-32x32.png',
+        ],
+      ],
+      'icon32x32',
+    ],
+    [
+      [
+        '#tag' => 'link',
+        '#attributes' => [
+          'rel' => 'manifest',
+          'href' => $favicons_location . '/site.webmanifest',
+        ],
+      ],
+      'webmanifest',
+    ],
+    [
+      [
+        '#tag' => 'link',
+        '#attributes' => [
+          'rel' => 'mask-icon',
+          'href' => $favicons_location . '/safari-pinned-tab.svg',
+          'color' => '#BD3623',
+        ],
+      ],
+      'mask-icon',
+    ],
+    [
+      [
+        '#tag' => 'meta',
+        '#attributes' => [
+          'name' => 'msapplication-TileColor',
+          'content' => '#B43D2F',
+        ],
+      ],
+      'msapplication-TileColor',
+    ],
+    [
+      [
+        '#tag' => 'meta',
+        '#attributes' => [
+          'name' => 'msapplication-config',
+          'content' => $favicons_location . '/browserconfig.xml',
+        ],
+      ],
+      'msapplication-config',
+    ],
+    [
+      [
+        '#tag' => 'meta',
+        '#attributes' => [
+          'name' => 'theme-color',
+          'content' => '#ffffff',
+        ],
+      ],
+      'theme-color',
+    ],
+  ];
+
+  $variables['page']['#attached']['html_head'] = array_merge(
+    $variables['page']['#attached']['html_head'],
+    $favicon_tags,
+    $fonts_tags
+  );
+
+  // Disabling the automatic phone number detection.
+  $variables['page']['#attached']['html_head'][] = [
+    [
+      '#tag' => 'meta',
+      '#attributes' => [
+        'name' => 'format-detection',
+        'content' => 'telephone=no',
+      ],
+    ],
+    'format-detection',
+  ];
+}
+
+/**
+ * Implements hook_library_info_build().
+ *
+ * Dynamically loading the component JS and defining them as libraries.
+ *
+ * Taking each of the files in /dist/js/components and creating a
+ * storypal_theme/JS-NAME library, to be attached in the relevant twig file.
+ * In the Storybook, the attachment happens through the .stories.js file.
+ */
+function storypal_theme_library_info_build() {
+  $directory = 'themes/custom/storypal_theme/dist/js/components';
+  $file_scan = \Drupal::service('file_system')->scanDirectory($directory, "/js$/");
+  $libraries = [];
+
+  foreach ($file_scan as $file) {
+    $libraries[$file->name]['js'] = [
+      '/' . $file->uri => [],
+    ];
+  }
+
+  return $libraries;
+}

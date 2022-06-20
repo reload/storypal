@@ -1,0 +1,19 @@
+{% if url %}
+<a href="{{ url }}">
+  {% endif %}
+
+  <article {{ attributes.addClass('list-article-teaser') }}>
+    {% if tag %}
+      {{ tag }}
+    {% endif %}
+
+    {{ title_prefix }}
+    {% if title %}
+      <h3>{{ title }}</h3>
+    {% endif %}
+    {{ title_suffix }}
+  </article>
+
+  {% if url %}
+</a>
+{% endif %}

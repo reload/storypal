@@ -1,0 +1,20 @@
+# The routes of the project.
+#
+# Each route describes how an incoming URL is going
+# to be processed by Platform.sh.
+
+"https://{all}/":
+  type: upstream
+  upstream: "drupal:http"
+
+"http://{all}/":
+  type: redirect
+  to: "https://{all}/"
+
+"https://www.{all}/":
+  type: redirect
+  to: "https://{all}/"
+
+"http://www.{all}/":
+  type: redirect
+  to: "https://{all}/"

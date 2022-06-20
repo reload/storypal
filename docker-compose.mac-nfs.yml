@@ -1,0 +1,12 @@
+version: '3'
+
+volumes:
+  projectroot:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
+      # Certain versions of Catalina / Docker might need to you to use
+      # this instead, to fix permission errors:
+      # device: ":/System/Volumes/Data${PWD}
+      device: ":${PWD}"

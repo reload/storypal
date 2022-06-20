@@ -1,0 +1,33 @@
+.drag-buttons {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.drag-buttons__button {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  height: 20px;
+  background-image: url("../images/menu-arrow--up.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+  z-index: 99;
+
+  &--down {
+    top: auto;
+    bottom: 0;
+    background-image: url("../images/menu-arrow--down.svg");
+  }
+}
+
+.drag-buttons__element {
+  transition: all 0.4s ease-in-out;
+
+  &.is-animating {
+    background-color: transparentize($color__main, 0.5);
+    opacity: 0.2;
+  }
+}

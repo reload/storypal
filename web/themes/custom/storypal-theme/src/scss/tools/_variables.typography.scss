@@ -1,0 +1,22 @@
+@import "font-import";
+
+$typo__font--body: "Quatro Slab", serif;
+$typo__font--headline: "Quatro Slab", serif;
+$typo__max-width: $width--component;
+$typo__max-width--headline: 930px;
+
+$typo__body: (
+  mobile: (
+    font-family: $typo__font--body,
+    font-size: 16px,
+    font-weight: normal,
+    font-style: normal,
+    line-height: 24px,
+  ),
+  tablet: (
+    font-family: $typo__font--body,
+    font-size: 18px,
+    font-weight: normal,
+    line-height: 28px,
+  ),
+);

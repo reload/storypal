@@ -1,0 +1,79 @@
+// Various CKeditor hacks.
+// We're also disabling the rule about SelectorFormat as we have no choice -
+// it's a class introduced by CKEditor.
+// scss-lint:disable SelectorFormat ImportantRule
+.cke_editable {
+  @include typography($typo__ck-editor);
+
+  > span {
+    display: block;
+  }
+
+  > * {
+    max-width: none;
+
+    @include spacing-property("margin-left");
+    @include spacing-property("margin-right");
+  }
+
+  > table,
+  > .media,
+  > blockquote,
+  > hr {
+    max-width: none;
+
+    @include spacing-property("margin-left", "none");
+    @include spacing-property("margin-right", "none");
+  }
+
+  .media {
+    position: relative;
+    min-height: 100px;
+    background-color: $color__grey1;
+  }
+
+  .media--type-document {
+    .media-library-item__edit {
+      display: none;
+    }
+  }
+
+  .media-library-item__edit {
+    @include spacing-property("top");
+    @include spacing-property("left");
+
+    position: absolute;
+    z-index: 40;
+  }
+
+  [data-view-mode="ckeditor_small_image"] {
+    float: right;
+  }
+
+  drupal-media {
+    justify-content: center;
+  }
+}
+
+.cke_combopanel {
+  min-width: 300px !important;
+}
+
+[text-format="formatted_title"] {
+  p {
+    display: inline;
+  }
+
+  br {
+    display: none;
+  }
+}
+
+// Hacking against the stream of CKEditor CSS.
+.js .cke_show_borders table.cke_show_border,
+.cke_show_borders table.cke_show_border {
+  border: 0 !important;
+  border-collapse: collapse;
+}
+
+// scss-lint:enable SelectorFormat ImportantRule

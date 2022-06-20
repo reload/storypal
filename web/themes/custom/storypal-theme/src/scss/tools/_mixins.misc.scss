@@ -1,0 +1,260 @@
+@use "sass:math";
+
+// Dont use this mixin directly. Use one of the 'media-query__xx' mixins below.
+// ---
+// @access private
+// ---
+// @param {string} $definition — e.g. 'min-width'.
+// @param {string} $breakpoint - pixel breakpoint.
+@mixin _media-query($definition, $breakpoint) {
+  // If we're meassuring by max-width, we want to remove a
+  // pixel as the variables are the max width of the device.
+  @if ($definition == "max-width") {
+    $breakpoint: $breakpoint - 1;
+  }
+
+  @media screen and ($definition: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin _media-query-between($breakpoint-min, $breakpoint-max) {
+  @media (min-width: map_get($breakpoints, $breakpoint-min)) and (max-width: map_get($breakpoints, $breakpoint-max) - 1px) {
+    @content;
+  }
+}
+
+// Trigger media query for large mobiles.
+// ---
+// @param {string} $definition — Default 'min-width'.
+@mixin media-query__mobile-large($definition: "min-width") {
+  @include _media-query($definition, map_get($breakpoints, mobile-large)) {
+    @content;
+  }
+}
+
+// Trigger media query for tablets.
+// ---
+// @param {string} $definition — Default 'min-width'.
+@mixin media-query__tablet($definition: "min-width") {
+  @include _media-query($definition, map_get($breakpoints, tablet)) {
+    @content;
+  }
+}
+
+// Trigger media query for tablets in landscape mode..
+// ---
+// @param {string} $definition — Default 'min-width'.
+@mixin media-query__tablet-landscape($definition: "min-width") {
+  @include _media-query($definition, map_get($breakpoints, tablet-landscape)) {
+    @content;
+  }
+}
+
+// Trigger media query for desktop.
+// ---
+// @param {string} $definition — Default 'min-width'.
+@mixin media-query__desktop($definition: "min-width") {
+  @include _media-query($definition, map_get($breakpoints, desktop)) {
+    @content;
+  }
+}
+
+// Trigger media query for large desktop.
+// ---
+// @param {string} $definition — Default 'min-width'.
+@mixin media-query__desktop-large($definition: "min-width") {
+  @include _media-query($definition, map_get($breakpoints, desktop-large)) {
+    @content;
+  }
+}
+
+// Trigger media query, by using name as a parameter.
+// Useful if you have the breakpoint name as a variable,
+// as you cant use variables in mixin include names.
+// ---
+// @param {string} $breakpoint — E.g. 'mobile'.
+@mixin media-query__name($breakpoint) {
+  // We're going mobile-first, so no MQ necessary here.
+  @if ($breakpoint == "mobile") {
+    @content;
+  } @else if ($breakpoint == "mobile-large") {
+    @include media-query__mobile-large {
+      @content;
+    }
+  } @else if ($breakpoint == "tablet") {
+    @include media-query__tablet {
+      @content;
+    }
+  } @else if ($breakpoint == "tablet-landscape") {
+    @include media-query__tablet-landscape {
+      @content;
+    }
+  } @else if ($breakpoint == "desktop") {
+    @include media-query__desktop {
+      @content;
+    }
+  } @else if ($breakpoint == "desktop-large") {
+    @include media-query__desktop-large {
+      @content;
+    }
+  } @else {
+    // Display a developer warning, for debugging sake.
+    @error "Your media query does not exist";
+  }
+}
+
+@mixin media-query__print-query {
+  .is-print-emulation {
+    @content;
+  }
+
+  @media print {
+    @content;
+  }
+}
+
+@mixin media-query__burger-menu-large($definition: "min-width") {
+  @include media-query__tablet($definition) {
+    @content;
+  }
+}
+
+// Set styling across breakpoints, with possibility to exclude.
+// Example usage of this mixin, where margin-top is excluded:
+// @include map-styling($map, 'margin-top');
+// ---
+// @param {map} $map.
+// @param {options} $options - List of options. Supports:
+//    - excludes : list - List of properties to ignore
+@mixin map-styling($map, $options: ()) {
+  $excludes: if(
+    map_has_key($options, "excludes"),
+    map_get($options, "excludes"),
+    ()
+  );
+
+  @each $breakpoint-key, $map-values in $map {
+    $map-inner: map-get($map, $breakpoint-key);
+
+    @include media-query__name($breakpoint-key) {
+      @each $property, $value in $map-inner {
+        @if not(index($excludes, $property)) {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}
+
+// Set styling for a font variant, across breakpoints.
+// @see mixin map-styling().
+// Example usage of this mixin:
+// @include typography($font__h4, 'line-height');
+// ---
+// @param {map} $font - See available maps in _variables.typography.scss ($font__VARIANT).
+// @param {options} $options - List of options. Supports:
+//    - excludes : list - List of properties to ignore
+@mixin typography($font, $options: ()) {
+  $excludes: if(
+    map_has_key($options, "excludes"),
+    map_get($options, "excludes"),
+    ()
+  );
+
+  @include map-styling(
+    $font,
+    (
+      excludes: $excludes,
+    )
+  );
+}
+
+// Include the spacing property that scales with media queries.
+// ---
+// @param {string} $property-name - The name of the property, such as "margin".
+// @param {string} (optional) $size - "normal", "small", "none".
+// @param {string} (optional) $modifier - "none", "negative".
+@mixin spacing-property($property-name, $size: "normal", $modifier: "none") {
+  $_spacing-small: $spacing--small;
+  $_spacing: $spacing;
+
+  @if ($size == "tiny") {
+    $_spacing-small: $spacing--tiny;
+    $_spacing: $spacing--mini;
+  }
+
+  @if ($size == "small") {
+    $_spacing-small: $spacing--mini;
+    $_spacing: $spacing--small;
+  }
+
+  @if ($size == "medium") {
+    $_spacing-small: $spacing--small;
+    $_spacing: $spacing--medium;
+  }
+
+  @if ($size == "large") {
+    $_spacing-small: $spacing--small;
+    $_spacing: $spacing--large;
+  }
+
+  @if ($size == "x-large") {
+    $_spacing-small: $spacing--large;
+    $_spacing: $spacing--x-large;
+  }
+
+  @if ($size == "outer-layout-padding") {
+    $_spacing-small: $spacing--small;
+    $_spacing: $spacing--large;
+  }
+
+  @if ($size == "none") {
+    $_spacing-small: 0;
+    $_spacing: 0;
+  }
+
+  @if ($modifier == "negative") {
+    $_spacing-small: $_spacing-small * -1;
+    $_spacing: $_spacing * -1;
+  }
+
+  #{$property-name}: $_spacing-small;
+
+  @include media-query__tablet {
+    #{$property-name}: $_spacing;
+  }
+}
+
+@mixin layout-unit() {
+  @include spacing-property("padding-left", "outer-layout-padding");
+  @include spacing-property("padding-right", "outer-layout-padding");
+
+  max-width: $width--max;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin typo__light-text {
+  color: $color__text--light;
+
+  a {
+    color: $color__text--light;
+
+    &:hover {
+      color: $color__text--light;
+    }
+  }
+}
+
+@mixin typo__dark-text {
+  color: $color__text;
+
+  a {
+    color: $color__text--link;
+
+    &:hover {
+      color: $color__text--link;
+    }
+  }
+}

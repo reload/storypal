@@ -1,0 +1,111 @@
+version: '3'
+
+services:
+  web:
+    build: ./docker/web
+    ports:
+      - '80'
+      - '443'
+    depends_on:
+      - fpm
+    volumes:
+      - 'projectroot:/var/www/'
+      - '${HOME}/.local/share/mkcert:/mkcert:ro'
+      - '${HOME}/.local/share/dev_certificates:/cert:rw'
+    environment:
+      VIRTUAL_PROTO: https
+      VIRTUAL_HOST: "storypal.docker"
+    working_dir: /var/www
+
+  fpm:
+    image: reload/drupal-php7-fpm:7.4
+    ports:
+      - '9000'
+    depends_on:
+      - db
+      - redis
+    working_dir: /var/www/web
+    labels:
+      org.drush.bin: /var/www/vendor/bin/drush
+    volumes:
+      - 'projectroot:/var/www/'
+      - './php.ini:/etc/php/7.4/fpm/conf.d/ZZ-drupal.ini'
+      - './docker/my_init.d/install-cron.sh:/etc/my_init.d/install-cron.sh'
+    environment:
+      PATH: '/var/www/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+      DRUSH_OPTIONS_URI: "https://storypal.docker"
+      PHP_EXTRA_EXTENSIONS: intl
+      PHP_SENDMAIL_PATH: /usr/local/bin/mhsendmail --smtp-addr="mailhog:1025"
+      XDEBUG_MODE: "debug,develop"
+      XDEBUG_CONFIG: "client_host=host.docker.internal"
+      discover_client_host: "0"
+
+  db:
+    image: mariadb:10.3.9
+    ports:
+      - '3306'
+    ## Below setup is for using a prebuild db-datadir.
+    #volumes:
+    #  - 'db-data:/var/lib/mysql'
+    #depends_on:
+    #  - db-data
+    ## If you want af db-data dump use this image instead (and remove
+    ## the volumes and depends_on).
+    # image: eu.gcr.io/reloaddk-data/db-data:bupl-latest
+
+    # # If you want a clean database use the below environment instead
+    # # (and remove the volumes and depends_on).
+    # environment:
+    #   MYSQL_ROOT_PASSWORD: root
+    #   MYSQL_DATABASE: db
+    #   MYSQL_USER: db
+    #   MYSQL_PASSWORD: db
+    # # If you want to use a sql dump locally uncomment the
+    # # below and environment (and remove the volumes and depends_on and db-data).
+    # volumes:
+    #   - './docker/db:/docker-entrypoint-initdb.d'
+
+  #db-data:
+  #  image: eu.gcr.io/reloaddk-data/db-datadir:storypal-latest
+  #  volumes:
+  #    - 'db-data:/var/lib/mysql'
+
+  redis:
+    image: redis:5.0
+    ports:
+      - '6379'
+
+  npm:
+    # This version should match the configuration in .platform.app.yaml
+    image: node:16-slim
+    volumes:
+      - 'cache:/npm-cache'
+      - 'projectroot:/var/www/'
+    working_dir: /var/www/
+    environment:
+      PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+      npm_config_cache: '/npm-cache/node'
+      VIRTUAL_PROTO: http
+      VIRTUAL_HOST: "storypal-storybook.docker"
+    command: sh -c "npm install && npm start"
+    tty: true
+    ports:
+      - '80'
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - '8025'
+    environment:
+      VIRTUAL_HOST: "storypal-mail.docker"
+
+volumes:
+  # NPM cache that survives docker-reset.sh
+  cache:
+  db-data:
+  projectroot:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}
+      o: bind

@@ -1,0 +1,153 @@
+$_actions-width: 150px;
+$_header-height: 60px;
+
+.is-admin-page {
+  .field--widget-entity-reference-paragraphs {
+    overflow: hidden;
+
+    .form-element--type-select {
+      max-width: 400px;
+      font-size: 90%;
+    }
+  }
+
+  .field--widget-paragraphs {
+    overflow: hidden;
+
+    .tabledrag-cell-content {
+      width: 100%;
+    }
+
+    .paragraphs-actions {
+      flex-grow: 1;
+      justify-content: flex-start;
+
+      > .paragraphs-features__delete-confirm,
+      > .paragraphs-icon-button-edit {
+        font-size: 0;
+        border: 0;
+        padding: 0;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+
+        background-repeat: no-repeat;
+        background-image: url("../images/edit.svg");
+        background-size: 65%;
+        background-position: center;
+      }
+
+      > .paragraphs-features__delete-confirm {
+        background-image: url("../images/delete.svg");
+        background-size: 50%;
+      }
+    }
+
+    .drag-previous::before {
+      display: none !important;
+    }
+
+    .field-multiple-table:first-of-type .draggable {
+      border-color: $color__black;
+
+      &.drag-previous > .field-multiple-drag {
+        background-color: #f3d6ac;
+      }
+
+      > .field-multiple-drag {
+        @include spacing-property("margin-right", "small");
+
+        position: relative;
+        background-color: white;
+        z-index: 5;
+
+        padding: 0;
+        border: 1px solid black;
+
+        background-repeat: no-repeat;
+        background-image: url("../images/dragndrop.svg");
+        background-size: 90%;
+        background-position: center;
+
+        * {
+          padding: 0;
+        }
+      }
+
+      .tabledrag-handle::after {
+        display: none !important;
+      }
+    }
+
+    .paragraphs_ee__add-in-between__wrapper[style] {
+      opacity: 0.75 !important;
+
+      &:hover {
+        opacity: 1 !important;
+      }
+    }
+
+    .paragraphs-subform {
+      @include spacing-property("padding-left");
+    }
+
+    .paragraph--view-mode--preview {
+      @include spacing-property("padding-left");
+
+      > .field {
+        @include spacing-property("margin-bottom", "tiny");
+      }
+
+      .field--label-above {
+        .field__item {
+          @include spacing-property("margin-left", "tiny");
+        }
+      }
+
+      .field__label {
+        &::after {
+          content: ":";
+        }
+      }
+
+      .field__item {
+        *:first-of-type {
+          margin-top: 0;
+        }
+      }
+    }
+
+    .paragraph-top {
+      @include spacing-property("padding", "tiny");
+      @include spacing-property("margin-bottom");
+
+      position: relative;
+      display: flex;
+      min-height: $_header-height;
+      align-items: center;
+      box-sizing: border-box;
+
+      &::before {
+        position: absolute;
+        content: "";
+        height: 1px;
+        left: -999px;
+        right: -999px;
+        bottom: 0;
+        background-color: $color__black--80;
+      }
+    }
+
+    .paragraph-type-label {
+      @include typography($typo__h3);
+    }
+
+    .paragraph-type-icon {
+      display: none;
+    }
+
+    .paragraphs-badge {
+      display: none;
+    }
+  }
+}

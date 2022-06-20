@@ -1,0 +1,15 @@
+status: true
+dependencies:
+  module:
+    - focal_point
+name: twitter_card
+label: 'Twitter card (800x320px)'
+effects:
+  2c28b833-c565-4d82-9628-b87d060abe5e:
+    uuid: 2c28b833-c565-4d82-9628-b87d060abe5e
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 800
+      height: 320
+      crop_type: focal_point

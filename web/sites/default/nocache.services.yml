@@ -1,0 +1,11 @@
+parameters:
+  session.storage.options:
+    cache: true
+
+  http.response.debug_cacheability_headers: false
+
+# To activate this feature, follow the instructions at the top of the
+# 'nocache.settings.php' file, which sits next to this file.
+services:
+  cache.backend.null:
+    class: Drupal\Core\Cache\NullBackendFactory

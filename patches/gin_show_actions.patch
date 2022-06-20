@@ -1,0 +1,21 @@
+diff --git a/templates/node/node-edit-form.html.twig b/templates/node/node-edit-form.html.twig
+index f2acb68..cb1ad6e 100644
+--- a/templates/node/node-edit-form.html.twig
++++ b/templates/node/node-edit-form.html.twig
+@@ -21,11 +21,15 @@
+   </div>
+   <div class="layout-region layout-region-node-secondary">
+     <div class="layout-region__content">
++      {{ form.actions }}
+       {{ form.advanced }}
+     </div>
+   </div>
+   <div class="layout-node-form__actions">
+-    {{ form.gin_actions }}
++
++    {# Storypal patch:
++      {{ form.gin_actions }}
++    #}
+   </div>
+ </div>
+
