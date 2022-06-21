@@ -1,12 +1,23 @@
 # Storybook + Drupal = StoryPal
 
-A(nother) Drupal boilerplate, for setting up new Reload Drupal sites.
+## Drupal boilerplate, for setting up new Reload Drupal sites.
 
-Powered by Drupal, Platform.sh, Storybook and a local docker environment.
+**Powered by:**
+
+- CMS: [Drupal 9+](https://drupal.org)
+  - [Gin Admin Theme](https://www.drupal.org/project/gin)
+- Hosting: [Platform.sh](https://platform.sh)
+- UI component manager: [StoryBook](https://storybook.js.org/)
+- Frontend tools: [reload/daft](https://github.com/reload/daft)
+- [Github Actions](./github/workflows) for auto-checking pull requests
+  - [Chromatic Visual UI Tests](https://www.chromatic.com/)
+  - [Drupal Regression](https://github.com/reload/action-drupal-regression) for testing Drupal DOM
+  - PHP, SCSS, JS linters and codestyle checkers
 
 ## Setting up a new StoryPal-based project
 
-- Fork this repo into a new Reload repo
+- Go to StoryPal's GitHub page: https://github.com/reload/storypal
+- Click "Use this template", where the clone options usually would be
 - Run through the checklists below
 
 ### Setting up Drupal
@@ -50,10 +61,10 @@ docker-compose exec web sh -c "drush cex -y"
 ```
 
 - Replace the fallback metatag images.
-  - See the files in /web/themes/custom/storypal-theme/src/images
+  - See the files in [/web/themes/custom/storypal_theme/src/images](./web/themes/custom/storypal_theme/src/images)
 - Create favicon package
   - Use https://realfavicongenerator.net/ to generate the assets
-  - Replace the files in /web/themes/custom/storypal-theme/favicons
+  - Replace the files in [/web/themes/custom/storypal_theme/favicons](./web/themes/custom/storypal_theme/favicons)
 
 ### Setting up Github Actions
 - Setup a Chromatic project

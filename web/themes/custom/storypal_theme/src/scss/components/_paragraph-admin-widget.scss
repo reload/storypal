@@ -48,7 +48,7 @@ $_header-height: 60px;
     }
 
     .field-multiple-table:first-of-type .draggable {
-      border-color: $color__black;
+      border-color: $color__dark;
 
       &.drag-previous > .field-multiple-drag {
         background-color: #f3d6ac;
@@ -134,12 +134,7 @@ $_header-height: 60px;
         left: -999px;
         right: -999px;
         bottom: 0;
-        background-color: $color__black--80;
       }
-    }
-
-    .paragraph-type-label {
-      @include typography($typo__h3);
     }
 
     .paragraph-type-icon {

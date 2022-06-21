@@ -20,3 +20,13 @@ $typo__body: (
     line-height: 28px,
   ),
 );
+
+$typo__ck-editor: (
+  mobile: (
+    font-family: $typo__font--body,
+    font-size: 16px,
+    font-weight: normal,
+    line-height: 24px,
+    letter-spacing: 0.05em,
+  ),
+);

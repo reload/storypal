@@ -9,7 +9,7 @@ if (isChromatic()) {
 
 import './drupal.js';
 
-import '../dist/js/storypal-theme.polyfills.js';
+import '../dist/js/storypal_theme.polyfills.js';
 
 // Add the filters to Twig instance.
 twigDrupal(Twig);

@@ -1,0 +1,39 @@
+// Various CKeditor hacks.
+// We're also disabling the rule about SelectorFormat as we have no choice -
+// it's a class introduced by CKEditor.
+// scss-lint:disable SelectorFormat ImportantRule
+.cke_editable {
+  @include typography($typo__ck-editor);
+
+  > span {
+    display: block;
+  }
+
+  .media {
+    position: relative;
+    min-height: 100px;
+    background-color: $color__inactive;
+  }
+
+  .media--type-document {
+    .media-library-item__edit {
+      display: none;
+    }
+  }
+
+  .media-library-item__edit {
+    @include spacing-property("top");
+    @include spacing-property("left");
+
+    position: absolute;
+    z-index: 40;
+  }
+
+  drupal-media {
+    justify-content: center;
+  }
+}
+
+.cke_combopanel {
+  min-width: 300px !important;
+}
