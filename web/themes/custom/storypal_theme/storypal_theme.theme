@@ -21,7 +21,7 @@ function storypal_theme_page_attachments_alter(array &$page) {
         '#tag' => 'meta',
         '#attributes' => [
           'property' => 'og:image',
-          'content' => '/themes/custom/toybox/dist/images/metatag_opengraph.jpg',
+          'content' => '/themes/custom/storypal_theme/dist/images/metatag_opengraph.jpg',
         ],
       ],
       'og_image',
@@ -59,7 +59,7 @@ function storypal_theme_page_attachments_alter(array &$page) {
         '#tag' => 'meta',
         '#attributes' => [
           'property' => 'twitter:image',
-          'content' => '/themes/custom/toybox/dist/images/metatag_twitter.jpg',
+          'content' => '/themes/custom/storypal_theme/dist/images/metatag_twitter.jpg',
         ],
       ],
       'twitter_cards_image',

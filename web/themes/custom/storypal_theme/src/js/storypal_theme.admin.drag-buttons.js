@@ -1,4 +1,4 @@
-Drupal.behaviors.toybox_drag_buttons = {
+Drupal.behaviors.storypal_theme_drag_buttons = {
   // eslint-disable-next-line no-unused-vars
   attach: function (context, settings) {
     // Poor mans detector: waiting for the tabledrag to be done.
