@@ -8,3 +8,6 @@ jobs:
     uses: reload/action-drupal-regression/.github/workflows/drupal-regression.yml@main
     with:
       PLATFORMSH_ID: CHANGE_ME
+      DAIS_URLS_FILE: ./.dais-urls
+    secrets:
+      PLATFORMSH_KEY: ${{ secrets.DAIS_PLATFORMSH_KEY }}

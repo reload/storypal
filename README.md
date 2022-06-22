@@ -16,18 +16,18 @@
 
 ## Setting up a new StoryPal-based project
 
-- Go to StoryPal's GitHub page: https://github.com/reload/storypal
+- Go to StoryPal's GitHub page: [https://github.com/reload/storypal](https://github.com/reload/storypal)
 - Click "Use this template", where the clone options usually would be
 - Run through the checklists below
 
 ### Setting up Drupal
 
 - Setup a platform.sh project
-  - Guide here: https://reload.atlassian.net/wiki/spaces/RW/pages/341934098/Ops+tning+af+platform.sh
+  - Guide here: [https://reload.atlassian.net/wiki/spaces/RW/pages/341934098/Ops+tning+af+platform.sh](https://reload.atlassian.net/wiki/spaces/RW/pages/341934098/Ops+tning+af+platform.sh)
 - Install Drupal, on platform
 - Setup a db-dump-worker
-  - Guide here: https://github.com/reload/db-dump-worker#adding-a-simple-site
-  - Trigger a dump straight away: https://github.com/reload/db-dump-worker#i-want-my-data-now
+  - Guide here: [https://github.com/reload/db-dump-worker#adding-a-simple-site](https://github.com/reload/db-dump-worker#adding-a-simple-site)
+  - Trigger a dump straight away ("I want my data straight away!" in the README)
 - Update docker-compose.yml to use db-data
 - Spin up your local site, [following the quickstart guide](./docs/docker.md)
 - Do an initial config export, and put it in a git commit by it's own:
@@ -63,32 +63,32 @@ docker-compose exec web sh -c "drush cex -y"
 - Replace the fallback metatag images.
   - See the files in [/web/themes/custom/storypal_theme/src/images](./web/themes/custom/storypal_theme/src/images)
 - Create favicon package
-  - Use https://realfavicongenerator.net/ to generate the assets
+  - Use [https://realfavicongenerator.net/](https://realfavicongenerator.net/) to generate the assets
   - Replace the files in [/web/themes/custom/storypal_theme/favicons](./web/themes/custom/storypal_theme/favicons)
 
 ### Setting up GitHub Actions
 - Setup a Chromatic project
-  - https://www.chromatic.com/apps
-  - Example: https://www.chromatic.com/builds?appId=617bf429e2c8d7003a0ca03e
+  - [https://www.chromatic.com/apps](https://www.chromatic.com/apps)
+  - Example: [https://www.chromatic.com/builds?appId=617bf429e2c8d7003a0ca03e](https://www.chromatic.com/builds?appId=617bf429e2c8d7003a0ca03e)
 - Add following GitHub Actions secrets:
-  - CHROMATIC_PROJECT_TOKEN
-    - Get this token under "Manage" > "Configure" in Chromatic.com
-  - JIRAAPITOKEN
+  - `CHROMATIC_PROJECT_TOKEN`
+    - Get this token under "Manage" > "Configure" in [Chromatic.com](https://chromatic.com)
+  - `JIRAAPITOKEN`
     - ? Where do you get this?
-  - GITHUBSECURITYTOKEN
+  - `GITHUBSECURITYTOKEN`
     - ? Where do you get this?
-  - DAIS_PLATFORMSH_ID
+  - `DAIS_PLATFORMSH_ID`
     - The ID of the platform.sh project
-    - BUPL example: odjkvsibijevi
-  - DAIS_PLATFORMSH_KEY
-    - Login to console.platform.sh as the Reload user
+    - BUPL example: `odjkvsibijevi`
+  - `DAIS_PLATFORMSH_KEY`
+    - Login to [console.platform.sh](https://console.platform.sh) as the Reload user
     - "My Profile" > "API Tokens" > "Create API token"
-- Also add following GitHub Dependabot secrets:
-  - CHROMATIC_PROJECT_TOKEN
-  - DAIS_PLATFORMSH_ID
-  - DAIS_PLATFORMSH_KEY
-- Add PLATFORMSH_ID in [/github/workflows/drupal-regression.yml](./github/workflows/drupal-regression.yml)
-  - Same value as you used in DAIS_PLATFORMSH_ID
+- **Also add following GitHub Dependabot secrets:**
+  - `CHROMATIC_PROJECT_TOKEN`
+  - `DAIS_PLATFORMSH_ID`
+  - `DAIS_PLATFORMSH_KEY`
+- Add `PLATFORMSH_ID` in [/github/workflows/drupal-regression.yml](./github/workflows/drupal-regression.yml)
+  - Same value as you used in `DAIS_PLATFORMSH_ID`
 
 ### Tweaking documentation
 - Update this README file to match your project
