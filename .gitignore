@@ -41,4 +41,5 @@ docker/db/*
 
 # Ignore built storybook.
 storybook-static/
+build-storybook.log
 
