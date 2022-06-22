@@ -1,0 +1,10 @@
+name: 'Drupal Regression'
+
+on: pull_request
+permissions: write-all
+
+jobs:
+  drupal-regression:
+    uses: reload/action-drupal-regression/.github/workflows/drupal-regression.yml@main
+    with:
+      PLATFORMSH_ID: CHANGE_ME

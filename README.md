@@ -9,7 +9,7 @@
 - Hosting: [Platform.sh](https://platform.sh)
 - UI component manager: [StoryBook](https://storybook.js.org/)
 - Frontend tools: [reload/daft](https://github.com/reload/daft)
-- [Github Actions](./github/workflows) for auto-checking pull requests
+- [GitHub Actions](./github/workflows) for auto-checking pull requests
   - [Chromatic Visual UI Tests](https://www.chromatic.com/)
   - [Drupal Regression](https://github.com/reload/action-drupal-regression) for testing Drupal DOM
   - PHP, SCSS, JS linters and codestyle checkers
@@ -66,11 +66,11 @@ docker-compose exec web sh -c "drush cex -y"
   - Use https://realfavicongenerator.net/ to generate the assets
   - Replace the files in [/web/themes/custom/storypal_theme/favicons](./web/themes/custom/storypal_theme/favicons)
 
-### Setting up Github Actions
+### Setting up GitHub Actions
 - Setup a Chromatic project
   - https://www.chromatic.com/apps
   - Example: https://www.chromatic.com/builds?appId=617bf429e2c8d7003a0ca03e
-- Add following Github Actions secrets:
+- Add following GitHub Actions secrets:
   - CHROMATIC_PROJECT_TOKEN
     - Get this token under "Manage" > "Configure" in Chromatic.com
   - JIRAAPITOKEN
@@ -83,10 +83,12 @@ docker-compose exec web sh -c "drush cex -y"
   - DAIS_PLATFORMSH_KEY
     - Login to console.platform.sh as the Reload user
     - "My Profile" > "API Tokens" > "Create API token"
-- Also add following Github Dependabot secrets:
+- Also add following GitHub Dependabot secrets:
   - CHROMATIC_PROJECT_TOKEN
   - DAIS_PLATFORMSH_ID
   - DAIS_PLATFORMSH_KEY
+- Add PLATFORMSH_ID in [/github/workflows/drupal-regression.yml](./github/workflows/drupal-regression.yml)
+  - Same value as you used in DAIS_PLATFORMSH_ID
 
 ### Tweaking documentation
 - Update this README file to match your project
@@ -94,4 +96,4 @@ docker-compose exec web sh -c "drush cex -y"
   - Remember to use [./docs](./docs) when it makes sense
 - Create an [Atlassian Compass](https://reload.atlassian.net/compass/) space for this project
   - Add links to Jira, Zulip etc. in the Compass space
-  - Code-based documentation stays in the Github Repo.
+  - Code-based documentation stays in the GitHub Repo.

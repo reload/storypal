@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c558465700a3c93e694775ba669b32e",
+    "content-hash": "0bcded6881d014abd2d51601f30ee801",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5649,6 +5649,16 @@
                 "source": "https://github.com/ralouphie/getallheaders/tree/develop"
             },
             "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
+            "name": "reload/drupal_regression",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reload/drupal-regression.git",
+                "reference": "main"
+            },
+            "type": "drupal-module"
         },
         {
             "name": "sainsburys/guzzle-oauth2-plugin",
@@ -12766,5 +12776,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }
