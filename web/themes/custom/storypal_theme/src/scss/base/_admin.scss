@@ -1,7 +1,7 @@
-// We need to disable ImportantRule as this has crazy nesting in Drupal.
-// scss-lint:disable SelectorFormat ImportantRule
+// We're disabling some stylelint rules, as this is mostly overriding
+// crazy Drupal classes.
+// stylelint-disable max-nesting-depth, selector-max-compound-selectors, color-named, no-descending-specificity
 .is-admin-page {
-
   .form-actions {
     .button {
       padding: 10px !important;
@@ -105,4 +105,4 @@
   }
 }
 
-// scss-lint:enable SelectorFormat ImportantRule
+// stylelint-enable max-nesting-depth, selector-max-compound-selectors, color-named, no-descending-specificity

@@ -1,2 +1,8 @@
 extends:
   - "@reloaddk/stylelint-recommended-scss"
+rules:
+  no-descending-specificity: null
+  scss/at-mixin-pattern: "^[a-z_][a-z0-9_-]*$"
+  scss/dollar-variable-pattern: "^[a-z_][a-z0-9_-]*$"
+  scss/percent-placeholder-pattern: "^[a-z_][a-z0-9_-]*$"
+  selector-class-pattern: "[A-Za-z0-9_-]+"
