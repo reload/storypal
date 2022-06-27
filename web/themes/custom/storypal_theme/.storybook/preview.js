@@ -1,7 +1,7 @@
 import Twig from 'twig';
 import twigDrupal from 'twig-drupal-filters';
 import isChromatic from 'chromatic/isChromatic';
-import '!style-loader!css-loader!../dist/css/toybox.bundle.css';
+import '!style-loader!css-loader!../dist/css/storypal_theme.bundle.css';
 
 if (isChromatic()) {
   window.isChromatic = true;

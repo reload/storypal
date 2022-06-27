@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // We need to wait for CKEditor to be initilized, but we dont have any
   // fancy callbacks that we can use.
   setTimeout(initCkeditor, 1000);
-
-  showEditBtn();
 });
 
 function initCkeditor() {

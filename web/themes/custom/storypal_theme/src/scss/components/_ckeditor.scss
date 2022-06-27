@@ -1,7 +1,6 @@
 // Various CKeditor hacks.
 // We're also disabling the rule about SelectorFormat as we have no choice -
 // it's a class introduced by CKEditor.
-// scss-lint:disable SelectorFormat ImportantRule
 .cke_editable {
   @include typography($typo__ck-editor);
 

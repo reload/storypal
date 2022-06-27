@@ -7,4 +7,4 @@ parameters:
     - web/themes/custom/storypal_theme/node_modules
   ignoreErrors:
     # This is a Drupal thing, and there's an issue: https://www.drupal.org/project/drupal/issues/3118975
-    - '#Unsafe usage of new static\(\)#'
+    # - '#Unsafe usage of new static\(\)#'

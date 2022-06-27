@@ -1,6 +1,9 @@
 $_actions-width: 150px;
 $_header-height: 60px;
 
+// We're disabling some stylelint rules, as this is mostly overriding
+// crazy Drupal classes.
+// stylelint-disable max-nesting-depth, selector-max-compound-selectors, color-named, no-descending-specificity
 .is-admin-page {
   .field--widget-entity-reference-paragraphs {
     overflow: hidden;
@@ -30,7 +33,6 @@ $_header-height: 60px;
         height: 40px;
         width: 40px;
         border-radius: 50%;
-
         background-repeat: no-repeat;
         background-image: url("../images/edit.svg");
         background-size: 65%;
@@ -60,10 +62,8 @@ $_header-height: 60px;
         position: relative;
         background-color: white;
         z-index: 5;
-
         padding: 0;
         border: 1px solid black;
-
         background-repeat: no-repeat;
         background-image: url("../images/dragndrop.svg");
         background-size: 90%;
@@ -146,3 +146,4 @@ $_header-height: 60px;
     }
   }
 }
+// stylelint-enable max-nesting-depth, selector-max-compound-selectors, color-named, no-descending-specificity

@@ -33,7 +33,7 @@ You can start the Storybook using `make storybook` and see it at:
 
 **[http://storypal-storybook.docker/](http://storypal-storybook.docker/)**
 
-**Storybook and the Toybox theme use the same assets**
+**Storybook and the Drupal theme use the same assets**
 [You can read about how it's set up in this guide on Medium.com](https://medium.com/@askibinski/integrating-storybook-with-drupal-ddabfc6c2f9d
 )
 
