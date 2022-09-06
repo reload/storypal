@@ -35,19 +35,24 @@
     "require": {
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.7",
+        "drupal/address": "^1.11",
         "drupal/admin_toolbar": "^3.1",
         "drupal/allowed_formats": "^1.3",
+        "drupal/ckeditor_config": "^3.1",
         "drupal/components": "^2.4",
         "drupal/cookiebot": "^1.0@alpha",
         "drupal/core-composer-scaffold": "^9.2",
         "drupal/core-project-message": "^9.2",
         "drupal/core-recommended": "^9.2",
+        "drupal/date_range_formatter": "^4.0",
         "drupal/editor_advanced_link": "^1.9",
+        "drupal/entity": "^1.4",
         "drupal/field_group": "^3.2",
         "drupal/focal_point": "^1.5",
         "drupal/gin": "^3.0",
         "drupal/gin_login": "^1.0",
         "drupal/gin_toolbar": "^1.0@beta",
+        "drupal/google_analytics": "^4.0",
         "drupal/gzip_html": "^1.2",
         "drupal/jquery_ui_accordion": "^1.1",
         "drupal/jquery_ui_multiselect_widget": "1.x-dev@dev",
@@ -58,10 +63,14 @@
         "drupal/paragraphs_ee": "^1.8",
         "drupal/pathauto": "^1.8",
         "drupal/quick_node_clone": "^1.14",
-        "drupal/redirect": "^1.6",
+        "drupal/redirect": "^1.8",
         "drupal/redis": "^1.5",
+        "drupal/simple_menu_permissions": "^1.4",
         "drupal/simple_sitemap": "^4.1",
         "drupal/stage_file_proxy": "^1.1",
+        "drupal/system_status": "^2.9",
+        "drupal/telephone_formatter": "^1.1",
+        "drupal/telephone_validation": "^2.3",
         "drupal/twig_tweak": "^3.1",
         "drupal/workflow_buttons": "^1.0@beta",
         "drush/drush": "^10",
@@ -137,9 +146,6 @@
             }
         },
         "patches": {
-            "drupal/gin": {
-                "CUSTOM: Show actions to fix workflow_buttons": "patches/gin_show_actions.patch"
-            },
             "drupal/paragraphs": {
                 "CUSTOM: Add remove button to actions": "patches/paragraphs_remove-button.patch"
             },

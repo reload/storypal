@@ -1,0 +1,23 @@
+uuid: af023d93-c16f-4301-bfae-7d2d1b5987d9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  theme:
+    - storypal_theme
+_core:
+  default_config_hash: 0gq3VPg-_UM69FCCWurLFIrrnIjC2HLKhwo9iQNtcUo
+id: storypal_theme_syndicate
+theme: storypal_theme
+region: header
+weight: 0
+provider: null
+plugin: node_syndicate_block
+settings:
+  id: node_syndicate_block
+  label: 'RSS feed'
+  label_display: '0'
+  provider: node
+  block_count: 10
+visibility: {  }

@@ -45,30 +45,30 @@ services:
     ports:
       - '3306'
     ## Below setup is for using a prebuild db-datadir.
-    #volumes:
-    #  - 'db-data:/var/lib/mysql'
-    #depends_on:
-    #  - db-data
+    volumes:
+      - 'db-data:/var/lib/mysql'
+    depends_on:
+      - db-data
     ## If you want af db-data dump use this image instead (and remove
     ## the volumes and depends_on).
     # image: eu.gcr.io/reloaddk-data/db-data:bupl-latest
 
     # # If you want a clean database use the below environment instead
     # # (and remove the volumes and depends_on).
-    # environment:
-    #   MYSQL_ROOT_PASSWORD: root
-    #   MYSQL_DATABASE: db
-    #   MYSQL_USER: db
-    #   MYSQL_PASSWORD: db
+    #environment:
+    #  MYSQL_ROOT_PASSWORD: root
+    #  MYSQL_DATABASE: db
+    #  MYSQL_USER: db
+    #  MdYSQL_PASSWORD: db
     # # If you want to use a sql dump locally uncomment the
     # # below and environment (and remove the volumes and depends_on and db-data).
     # volumes:
     #   - './docker/db:/docker-entrypoint-initdb.d'
 
-  #db-data:
-  #  image: eu.gcr.io/reloaddk-data/db-datadir:storypal-latest
-  #  volumes:
-  #    - 'db-data:/var/lib/mysql'
+  db-data:
+    image: eu.gcr.io/reloaddk-data/db-datadir:storypal-latest
+    volumes:
+      - 'db-data:/var/lib/mysql'
 
   redis:
     image: redis:5.0

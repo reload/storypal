@@ -1,0 +1,22 @@
+uuid: 28930286-b775-438d-ac69-b7c3c8c2e1b7
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - storypal_theme
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: storypal_theme_content
+theme: storypal_theme
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

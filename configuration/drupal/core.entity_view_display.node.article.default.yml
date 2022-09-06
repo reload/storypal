@@ -1,0 +1,22 @@
+uuid: a875b91b-9076-4818-9f04-3e760bfdce1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+  module:
+    - user
+_core:
+  default_config_hash: 7fb0j9HnIXfP9ndewzgPPzzeX_SV532wuYpkscrCMCk
+id: node.article.default
+targetEntityType: node
+bundle: article
+mode: default
+content:
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true
