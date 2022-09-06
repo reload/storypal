@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: yFE1nEOaD0XSv9vzdabMHPyYvo9An7fYVq_yAQgJK_I
+langcode: en
+cookiebot_cbid: ''
+cookiebot_block_cookies: true
+cookiebot_iab_enabled: false
+cookiebot_show_declaration: false
+cookiebot_show_declaration_node_path: ''
+exclude_paths: ''
+exclude_admin_theme: false
+exclude_uid_1: false
+message_placeholder_cookieconsent_optout_marketing_show: false
+message_placeholder_cookieconsent_optout_marketing:
+  value: 'Please <a href="!cookiebot_renew" class="cookieconsent-optout-marketing__cookiebot-renew">accept marketing-cookies</a> to view this embedded content from <a href="!cookiebot_from_src_url" target="_blank" class="cookieconsent-optout-marketing__from-src-url">!cookiebot_from_src_url</a>'
+  format: full_html

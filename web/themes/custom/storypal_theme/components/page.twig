@@ -1,0 +1,19 @@
+<div {{ attributes.addClass('layout', 'is-bundle-' ~ bundle) }}>
+  {% block header %}
+    {% for element in header %}
+      {{ element }}
+    {% endfor %}
+  {% endblock %}
+
+  <main role="main" class="layout__container" id="main-content">
+    {% block content %}
+      {% for element in content %}
+        {{ element }}
+      {% endfor %}
+    {% endblock %}
+
+    {% block menu_footer %}{% endblock %}
+    {% block contact_footer %}{% endblock %}
+    {% block footer %}{% endblock %}
+  </main>
+</div>

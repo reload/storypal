@@ -1,0 +1,22 @@
+uuid: 19809a5e-7fcc-441f-8170-6445e6cf0bf2
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - storypal_theme
+_core:
+  default_config_hash: VfPFqqxfkomud5CO8DUijw85QIl9GIxh_nIxLOYESxg
+id: storypal_theme_help
+theme: storypal_theme
+region: header
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

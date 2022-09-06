@@ -1,0 +1,12 @@
+_core:
+  default_config_hash: RIxOrFfayh9I8CHci50AVKpNXA7KzkTLnjATp5-xW5A
+ignored_bundles:
+  node:
+    - ignored_node_bundle
+  paragraph:
+    - ignored_paragraph_bundle
+ignored_fields:
+  node:
+    - field_regression_ignored
+  paragraph:
+    - field_regression_ignored

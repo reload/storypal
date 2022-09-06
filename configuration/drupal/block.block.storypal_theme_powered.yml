@@ -1,0 +1,22 @@
+uuid: 8637cb3d-5c34-4ca9-b4b9-37ca253d3efe
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - storypal_theme
+_core:
+  default_config_hash: eYL19CLDyinGTWYQfBD1DswWzglEotE_kHnHx3AxTXM
+id: storypal_theme_powered
+theme: storypal_theme
+region: header
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }
