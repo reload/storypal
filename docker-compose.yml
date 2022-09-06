@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    build: ./docker/web
+    image: reload/drupal-apache-fpm:latest
     ports:
       - '80'
       - '443'
