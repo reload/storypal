@@ -1,3 +1,4 @@
+import drupalAttribute from "drupal-attribute";
 import template from './page.twig';
 import { ArticleList } from "./article-list.stories";
 

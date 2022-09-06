@@ -24,13 +24,20 @@
 
 - Setup a platform.sh project
   - Guide here: [https://reload.atlassian.net/wiki/spaces/RW/pages/341934098/Ops+tning+af+platform.sh](https://reload.atlassian.net/wiki/spaces/RW/pages/341934098/Ops+tning+af+platform.sh)
+
+StoryPal also has it's own Platform.sh project, with a basic Drupal installation.
+You could take the database from this project, and build from that, or you can
+start from complete scratch:
+
 - Install Drupal, on platform
-- Setup a db-dump-worker
-  - Guide here: [https://github.com/reload/db-dump-worker#adding-a-simple-site](https://github.com/reload/db-dump-worker#adding-a-simple-site)
-  - Trigger a dump straight away ("I want my data straight away!" in the README)
 - Update docker-compose.yml to use db-data
 - Spin up your local site, [following the quickstart guide](./docs/docker.md)
 - Do an initial config export, and put it in a git commit by it's own:
+
+Remember to setup a dump-worker:
+
+- Guide here: [https://github.com/reload/db-dump-worker#adding-a-simple-site](https://github.com/reload/db-dump-worker#adding-a-simple-site)
+- Trigger a dump straight away ("I want my data straight away!" in the README)
 
 ```shell
 docker-compose exec web sh -c "drush cex -y"
