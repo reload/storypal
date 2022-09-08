@@ -1,0 +1,9 @@
+uuid: 34f0c22a-8330-42c6-b178-bd3a82fc0913
+langcode: en
+status: true
+dependencies: {  }
+id: da
+label: Danish
+direction: ltr
+weight: 0
+locked: false
