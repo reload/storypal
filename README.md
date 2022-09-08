@@ -107,7 +107,7 @@ docker-compose exec web sh -c "drush cex -y"
   - `CHROMATIC_PROJECT_TOKEN`
   - `DAIS_PLATFORMSH_ID`
   - `DAIS_PLATFORMSH_KEY`
-- Add `PLATFORMSH_ID` in [/github/workflows/drupal-regression.yml](./github/workflows/drupal-regression.yml)
+- Add `PLATFORMSH_ID` in [./.github/workflows/drupal-regression.yml](./.github/workflows/drupal-regression.yml)
   - Same value as you used in `DAIS_PLATFORMSH_ID`
 
 ### Tweaking documentation
