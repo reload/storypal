@@ -25,7 +25,7 @@
 - Setup a platform.sh project
   - Guide here: [https://reload.atlassian.net/wiki/spaces/RW/pages/341934098/Ops+tning+af+platform.sh](https://reload.atlassian.net/wiki/spaces/RW/pages/341934098/Ops+tning+af+platform.sh)
 
-#### Using the pre-made installation
+#### OPTION 1 (RECOMMENDED): Using the pre-made installation
 
 StoryPal also has it's own Platform.sh project, with a basic Drupal installation.
 You could take the database from this project, and build from that.
@@ -36,7 +36,7 @@ That means you'll have to be added to the StoryPal project, so you can export th
 platform db:dump -e main -p ppobdkgor7fo6 -d ./
 ```
 
-#### Alternative: Create your own installation
+#### OPTION 2 (ALTERNATIVE): Create your own installation
 
 - Once you've set up your own project, you can setup Drupal through the web interface
 - Export the database from the project, for use in local docker
