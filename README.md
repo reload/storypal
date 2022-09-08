@@ -25,19 +25,23 @@
 - Setup a platform.sh project
   - Guide here: [https://reload.atlassian.net/wiki/spaces/RW/pages/341934098/Ops+tning+af+platform.sh](https://reload.atlassian.net/wiki/spaces/RW/pages/341934098/Ops+tning+af+platform.sh)
 
-StoryPal also has it's own Platform.sh project, with a basic Drupal installation.
-You could take the database from this project, and build from that, or you can
-start from complete scratch:
+#### Using the pre-made installation
 
-- Install Drupal, on platform
-- Update docker-compose.yml to use db-data
+StoryPal also has it's own Platform.sh project, with a basic Drupal installation.
+You could take the database from this project, and build from that.
+
+That means you'll have to be added to the StoryPal project, so you can export the database using:
+
+```
+platform db:dump -e main -p ppobdkgor7fo6 -d ./
+```
+
+#### Alternative: Create your own installation
+
+- Once you've set up your own project, you can setup Drupal through the web interface
+- Export the database from the project, for use in local docker
 - Spin up your local site, [following the quickstart guide](./docs/docker.md)
 - Do an initial config export, and put it in a git commit by it's own:
-
-Remember to setup a dump-worker:
-
-- Guide here: [https://github.com/reload/db-dump-worker#adding-a-simple-site](https://github.com/reload/db-dump-worker#adding-a-simple-site)
-- Trigger a dump straight away ("I want my data straight away!" in the README)
 
 ```shell
 docker-compose exec web sh -c "drush cex -y"
@@ -67,6 +71,16 @@ docker-compose exec web sh -c "drush config-set system.theme admin gin"
 docker-compose exec web sh -c "drush cex -y"
 ```
 
+
+### Setting up dump-worker
+
+- Guide here: [https://github.com/reload/db-dump-worker#adding-a-simple-site](https://github.com/reload/db-dump-worker#adding-a-simple-site)
+- Trigger a dump straight away ("I want my data straight away!" in the README)
+- Update docker-compose.yml to use db-data, with the correct image.
+
+### Creating your own theme
+
+- Dont use Storypal as a base theme - just add your changes directly in the theme, otherwise Storybook wont work.
 - Replace the fallback metatag images.
   - See the files in [/web/themes/custom/storypal_theme/src/images](./web/themes/custom/storypal_theme/src/images)
 - Create favicon package
@@ -80,16 +94,15 @@ docker-compose exec web sh -c "drush cex -y"
 - Add following GitHub Actions secrets:
   - `CHROMATIC_PROJECT_TOKEN`
     - Get this token under "Manage" > "Configure" in [Chromatic.com](https://chromatic.com)
-  - `JIRAAPITOKEN`
-    - ? Where do you get this?
-  - `GITHUBSECURITYTOKEN`
-    - ? Where do you get this?
   - `DAIS_PLATFORMSH_ID`
     - The ID of the platform.sh project
     - BUPL example: `odjkvsibijevi`
   - `DAIS_PLATFORMSH_KEY`
     - Login to [console.platform.sh](https://console.platform.sh) as the Reload user
     - "My Profile" > "API Tokens" > "Create API token"
+  - `JIRAAPITOKEN`
+  - `GITHUBSECURITYTOKEN`
+
 - **Also add following GitHub Dependabot secrets:**
   - `CHROMATIC_PROJECT_TOKEN`
   - `DAIS_PLATFORMSH_ID`
