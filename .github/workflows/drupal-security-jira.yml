@@ -23,7 +23,7 @@ jobs:
           JIRA_HOST: https://reload.atlassian.net
           JIRA_USER: security+jira@reload.dk
           JIRA_ISSUE_TYPE: Security
-          #JIRA_WATCHERS: tiro@bupl.dk
-          #JIRA_PROJECT: BUPL
+          #JIRA_WATCHERS: email@example.com
+          #JIRA_PROJECT: PROJECT
           #DRUPAL_HOST: reload.dk
           DRY_RUN: ${{ github.event.inputs.dry_run || '0' }}

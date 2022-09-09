@@ -16,5 +16,5 @@ jobs:
           JIRA_HOST: https://reload.atlassian.net
           JIRA_USER: security+jira@reload.dk
           JIRA_ISSUE_TYPE: Security
-          #JIRA_PROJECT: BUPL
-          #JIRA_WATCHERS: tiro@bupl.dk
+          #JIRA_PROJECT: PROJECT
+          #JIRA_WATCHERS: email@example.com
