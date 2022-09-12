@@ -30,6 +30,7 @@ services:
     volumes:
       - 'projectroot:/var/www/'
       - './php.ini:/etc/php/7.4/fpm/conf.d/ZZ-drupal.ini'
+      - './php.ini:/etc/php/7.4/cli/conf.d/ZZ-drupal.ini'
       - './docker/my_init.d/install-cron.sh:/etc/my_init.d/install-cron.sh'
     environment:
       PATH: '/var/www/vendor/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
