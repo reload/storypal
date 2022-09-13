@@ -2,7 +2,7 @@
 
 /**
  * @file
- * BUPL settings.
+ * Storypal settings.
  */
 
 // Ensure default variables exists, see the stock default.settings.php for

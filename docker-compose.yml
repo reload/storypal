@@ -52,7 +52,7 @@ services:
       - db-data
     ## If you want af db-data dump use this image instead (and remove
     ## the volumes and depends_on).
-    # image: eu.gcr.io/reloaddk-data/db-data:bupl-latest
+    # image: eu.gcr.io/reloaddk-data/db-data:PROJECT-latest
 
     # # If you want a clean database use the below environment instead
     # # (and remove the volumes and depends_on).
