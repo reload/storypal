@@ -37,8 +37,6 @@
     "build-storybook": "build-storybook --config-dir $npm_package_config_themepath/.storybook"
   },
   "devDependencies": {
-    "@babel/cli": "^7.18.10",
-    "@babel/core": "^7.19.0",
     "@reloaddk/daft": "^1.2.2",
     "@storybook/addon-a11y": "^6.5.10",
     "@storybook/addon-actions": "^6.4.19",
