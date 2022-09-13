@@ -6,8 +6,6 @@
     "themepath": "web/themes/custom/storypal_theme"
   },
   "scripts": {
-    "typecheck:check": "tsc --noEmit",
-    "typecheck:watch": "npm run typecheck:check -- --watch --preserveWatchOutput",
     "images:build": "cpx $npm_package_config_themepath/src/images/**/* $npm_package_config_themepath/dist/images/ --verbose --include-empty-dirs",
     "images:watch": "npm run images:build -- --watch",
     "fonts:build": "cpx $npm_package_config_themepath/src/fonts/**/* $npm_package_config_themepath/dist/fonts/ --verbose --include-empty-dirs",
