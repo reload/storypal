@@ -27,9 +27,9 @@
     "lint": "concurrently 'npm:js:lint' 'npm:css:lint'",
     "format": "concurrently 'npm:js:format' 'npm:css:format'",
     "build": "concurrently 'npm:js:build' 'npm:css:build' 'npm:images:build' 'npm:fonts:build'",
-    "watch": "concurrently 'npm:js:watch' 'npm:css:watch' 'npm:images:watch' 'npm:fonts:watch'",
+    "watch": "concurrently 'npm:js:watch' 'npm:css:watch' 'npm:images:watch' 'npm:fonts:watch' -c 'yellow,magenta,blue,cyan'",
     "serve": "serve $npm_package_config_themepath/dist/",
-    "start": "npm run watch --raw",
+    "start": "npm run watch",
     "storybook-80": "start-storybook --config-dir $npm_package_config_themepath/.storybook --port 80",
     "storybook": "start-storybook --config-dir $npm_package_config_themepath/.storybook",
     "build-storybook": "build-storybook --config-dir $npm_package_config_themepath/.storybook"
