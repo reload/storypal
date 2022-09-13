@@ -19,7 +19,7 @@ fi
 
 echoc "Running frontend checks.."
 
-docker-compose exec npm sh -c  "\
+docker-compose exec node sh -c  "\
     cd /var/www \
     && echo ' * Auto-linting with 'npm run format'' \
     && npm run format \
