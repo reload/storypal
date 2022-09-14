@@ -12,9 +12,10 @@ jobs:
         php-version: 7.4
         tools: composer
         coverage: none
-    - name: Composer validate
+    - name: Composer validate and update
       run: |
         composer validate --no-check-all --no-check-publish
+        composer update --lock --quiet
 
   phpcs:
     name: Lint PHP
