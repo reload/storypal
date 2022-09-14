@@ -9,6 +9,9 @@
             "role": "Development"
         }
     ],
+    "provide": {
+        "drupal/ckeditor": "*"
+    },
     "repositories": [
         {
             "type": "vcs",
