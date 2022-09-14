@@ -76,19 +76,19 @@ services:
     ports:
       - '6379'
 
-  npm:
+  node:
     # This version should match the configuration in .platform.app.yaml
     image: node:16-slim
     volumes:
       - 'cache:/npm-cache'
-      - 'projectroot:/var/www/'
+      - '${PWD}:/var/www/'
     working_dir: /var/www/
     environment:
       PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
       npm_config_cache: '/npm-cache/node'
       VIRTUAL_PROTO: http
       VIRTUAL_HOST: "storypal-storybook.docker"
-    command: sh -c "npm install && npm start"
+    command: sh -c "npm install && npm run start"
     tty: true
     ports:
       - '80'

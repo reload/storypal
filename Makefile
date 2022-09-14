@@ -13,7 +13,7 @@ checks: ## Run the same checks as GitHub actions will do when pushing to PR.
 	./scripts/checks.sh
 
 storybook: ## Start storybook server, in a docker environment.
-	docker-compose exec npm npm run storybook-80
+	docker-compose exec node npm run storybook-80
 
 storybook-local: ## NOT RECOMMENDED! Run NPM Build + Storybook with your local NPM.
 	npm run build && npm run storybook
