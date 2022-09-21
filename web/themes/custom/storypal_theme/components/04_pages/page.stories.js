@@ -1,6 +1,6 @@
 import drupalAttribute from "drupal-attribute";
-import template from './page.twig';
-import { ArticleList } from "./article-list.stories";
+import template from '../templates/page.twig';
+import { ArticleList } from "../03_components/article-list.stories";
 
 export default {
   title: "Pages/Pages",

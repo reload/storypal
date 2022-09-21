@@ -1,8 +1,8 @@
 import drupalAttribute from 'drupal-attribute'
 
-import template from './list-article-teaser.twig';
-import {genre, title} from './_mock-data.js';
-import miniTagTemplate from "./mini-tag.twig";
+import template from '../templates/list-article-teaser.twig';
+import miniTagTemplate from "../templates/mini-tag.twig";
+import {genre, title} from '../assets/_mock-data.js';
 
 export default {
   title: "Molecules/List Article Teaser",

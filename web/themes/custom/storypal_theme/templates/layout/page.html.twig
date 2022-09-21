@@ -33,7 +33,7 @@
 #}
 {% set bundle = bundle|default(node.bundle())|clean_class %}
 
-{% extends '@storybook/page.twig' %}
+{% extends '@storybook/templates/page.twig' %}
 
 {% block header %}
   {{ page.header }}
