@@ -1,8 +1,8 @@
 import drupalAttribute from 'drupal-attribute'
 
-import template from './article-list.twig';
+import template from '../templates/article-list.twig';
 
-import {listArticleTeaser} from './list-article-teaser.stories.js';
+import {listArticleTeaser} from '../02_molecules/list-article-teaser.stories.js';
 
 export default {
   title: "Components/Article List",

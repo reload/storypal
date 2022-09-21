@@ -1,10 +1,10 @@
-import template from './mini-tag.twig';
+import template from '../templates/mini-tag.twig';
 
 import drupalAttribute from "drupal-attribute";
-import {genre} from './_mock-data.js';
+import {genre} from '../assets/_mock-data.js';
 
 export default {
-  title: "Atom/Mini tag",
+  title: "Atoms/Mini-tag",
 };
 
 export const miniTag = () => (
