@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b971e3e24496d391d70023576571a3e8",
+    "content-hash": "c075499b67dc37cb1f405a9e564fd123",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2387,26 +2387,26 @@
         },
         {
             "name": "drupal/editor_advanced_link",
-            "version": "1.9.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/editor_advanced_link.git",
-                "reference": "8.x-1.9"
+                "reference": "2.0.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/editor_advanced_link-8.x-1.9.zip",
-                "reference": "8.x-1.9",
-                "shasum": "ee40ec8c8c7b14c69de3de6a5275959dc32455c4"
+                "url": "https://ftp.drupal.org/files/projects/editor_advanced_link-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "db9469ffc073ab0b350296c86069441882ba2147"
             },
             "require": {
-                "drupal/core": "^8 || ^9"
+                "drupal/core": "^9.2"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.9",
-                    "datestamp": "1624032562",
+                    "version": "2.0.0",
+                    "datestamp": "1624528083",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3202,17 +3202,17 @@
         },
         {
             "name": "drupal/linkit",
-            "version": "5.0.0-beta13",
+            "version": "6.0.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/linkit.git",
-                "reference": "8.x-5.0-beta13"
+                "reference": "6.0.0-beta3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/linkit-8.x-5.0-beta13.zip",
-                "reference": "8.x-5.0-beta13",
-                "shasum": "9215fbea84166cabc9b7a2d9a04dedaffb9fc1ed"
+                "url": "https://ftp.drupal.org/files/projects/linkit-6.0.0-beta3.zip",
+                "reference": "6.0.0-beta3",
+                "shasum": "39a5bf54cbc88324d788a573df7b3fecf7622065"
             },
             "require": {
                 "drupal/core": "^8.7.7 || ^9"
@@ -3223,8 +3223,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-5.0-beta13",
-                    "datestamp": "1632946970",
+                    "version": "6.0.0-beta3",
+                    "datestamp": "1632946984",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
@@ -3450,30 +3450,32 @@
         },
         {
             "name": "drupal/paragraphs_ee",
-            "version": "1.8.0",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/paragraphs_ee.git",
-                "reference": "8.x-1.8"
+                "reference": "2.0.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/paragraphs_ee-8.x-1.8.zip",
-                "reference": "8.x-1.8",
-                "shasum": "191ec06f3ed2c6c35205fe98235b52905ab5d17f"
+                "url": "https://ftp.drupal.org/files/projects/paragraphs_ee-2.0.3.zip",
+                "reference": "2.0.3",
+                "shasum": "f825a4a7378c88640f3445c217b77cf9481cfb63"
             },
             "require": {
                 "drupal/core": "^8.6 || ^9",
-                "drupal/paragraphs_features": "^1.4"
+                "drupal/paragraphs_features": "~1.15"
             },
             "require-dev": {
-                "drupal/paragraphs_sets": "*"
+                "drupal/paragraphs_sets": "*",
+                "phpunit/phpunit": "^9.5",
+                "weitzman/drupal-test-traits": "^1.5"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.8",
-                    "datestamp": "1625752334",
+                    "version": "2.0.3",
+                    "datestamp": "1652155247",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
