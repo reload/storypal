@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0 # 👈 Required to retrieve git history
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3.5.0
         with:
           node-version: '16'
 
