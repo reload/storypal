@@ -41,14 +41,6 @@ docker-compose exec fpm sh -c  "\
 
 echoc "Running Web checks.."
 
-docker-compose exec web sh -c  "\
-    cd /var/www \
-    && echo ' * Validating .po files..' \
-    && msgfmt --check-format --check-domain web/modules/custom/storypal_base/translations/da.po \
-    && echo ' * Checking drupal-regression..' \
-    && (cd /var/www/drupal-regression && python compare.py --url=localhost --allowexit=True) \
-  "
-
 git status
 
 echoc "I'm still here, so everything went good!"
