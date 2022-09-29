@@ -107,13 +107,22 @@ hooks:
     (cd "$PLATFORM_DOCUMENT_ROOT/../" && npm install && npm run build)
     curl -sS https://platform.sh/cli/installer | php
 
-
   # We run deploy hook after your application has been deployed and started.
+  # We use set -e to cause a total fail if something goes wrong.
+  # Otherwise, a deploy-status file will instead be populated with 1.
+  # You can use a Github action to check if there was any issues with deploy.
+  # This is necessary, as PlatformSH just fails silently, such as when
+  # the Drupal config is invalid.
   deploy: |
+    STATUS_FILE="$PLATFORM_DOCUMENT_ROOT/sites/default/files/deploy-status"
+    rm -f "$STATUS_FILE"
+    echo "0" > "$STATUS_FILE"
+    set -e
     cd "$PLATFORM_DOCUMENT_ROOT"
     drush --yes deploy
     drush locale-import da modules/custom/storypal_base/translations/da.po
     drush --yes cache:rebuild
+    echo "1" > "$STATUS_FILE"
 
 # The configuration of scheduled execution.
 crons:

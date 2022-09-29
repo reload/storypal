@@ -1,0 +1,13 @@
+name: 'Platform.sh - Successful deploy test'
+
+on: pull_request
+permissions: write-all
+
+jobs:
+  platformsh-deploy-test:
+    uses: reload/workflow-platformsh-deploy-status/.github/workflows/platformsh-deploy-test.yml@main
+    with:
+      PLATFORMSH_ID: ppobdkgor7fo6
+      DEPLOY_STATUS_URL_FILE: ./.platform-deploy-status-url
+    secrets:
+      PLATFORMSH_KEY: ${{ secrets.DAIS_PLATFORMSH_KEY }}
