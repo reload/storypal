@@ -168,9 +168,6 @@
             "drupal/jquery_ui_multiselect_widget": {
                 "2941549: Rewrite the Drupal 8/9 branch": "https://www.drupal.org/files/issues/2021-10-14/2941549_rewrite-d8d9-version.patch"
             },
-            "drupal/field_group": {
-                "3205504: Add support for #description_display for container types that support it": "https://www.drupal.org/files/issues/2021-08-24/3205504-6.field_group_description_display.patch"
-            },
             "drupal/linkit": {
                 "2712951: Linkit for Link field": "https://www.drupal.org/files/issues/2022-02-09/2712951-274.patch"
             }
