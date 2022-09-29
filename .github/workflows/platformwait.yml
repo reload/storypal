@@ -1,0 +1,28 @@
+name: 'Platform.sh - Successful deploy test'
+
+on:
+  workflow_call:
+    inputs:
+      PLATFORMSH_ID:
+        required: true
+        type: string
+    secrets:
+      PLATFORMSH_KEY:
+        required: true
+
+jobs:
+  platformsh-deploy-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup PHP and disable opcache
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: none, curl, json, mbstring, pcre, and phar
+      - name: Get PlatformSH URL
+        env:
+          PLATFORMSH_CLI_TOKEN: ${{ secrets.PLATFORMSH_KEY }}
+        run: |
+          curl -fsS https://platform.sh/cli/installer | php
+          URL=$(~/.platformsh/bin/platform env:url -p ${{ inputs.PLATFORMSH_ID }} -e pr-${{ github.event.pull_request.number }} -1 --pipe -n)
+          echo "::set-output name=PLATFORM_URL::$URL"
