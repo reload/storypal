@@ -96,7 +96,7 @@ docker-compose exec web sh -c "drush cex -y"
     - Get this token under "Manage" > "Configure" in [Chromatic.com](https://chromatic.com)
   - `DAIS_PLATFORMSH_ID`
     - The ID of the platform.sh project
-    - BUPL example: `odjkvsibijevi`
+    - Storypal example: `ppobdkgor7fo6`
   - `DAIS_PLATFORMSH_KEY`
     - Login to [console.platform.sh](https://console.platform.sh) as the Reload user
     - "My Profile" > "API Tokens" > "Create API token"
