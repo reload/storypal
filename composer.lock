@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b971e3e24496d391d70023576571a3e8",
+    "content-hash": "09729dc84f3b98cc7f7de53db482e7a2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6376,11 +6376,11 @@
         },
         {
             "name": "reload/drupal_regression",
-            "version": "1.0",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reload/drupal-regression.git",
-                "reference": "main"
+                "reference": "hash"
             },
             "type": "drupal-module"
         },
@@ -13497,5 +13497,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

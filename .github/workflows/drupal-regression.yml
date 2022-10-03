@@ -5,7 +5,7 @@ permissions: write-all
 
 jobs:
   drupal-regression:
-    uses: reload/action-drupal-regression/.github/workflows/drupal-regression.yml@main
+    uses: reload/action-drupal-regression/.github/workflows/drupal-regression.yml@hash
     with:
       PLATFORMSH_ID: ppobdkgor7fo6
     secrets:

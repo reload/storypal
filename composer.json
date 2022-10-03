@@ -25,12 +25,12 @@
             "type": "package",
             "package": {
                 "name": "reload/drupal_regression",
-                "version": "1.0",
+                "version": "1.1",
                 "type":"drupal-module",
                 "source": {
                     "url": "https://github.com/reload/drupal-regression.git",
                     "type": "git",
-                    "reference": "main"
+                    "reference": "hash"
                 }
             }
         }
@@ -79,7 +79,7 @@
         "drush/drush": "^10",
         "firebase/php-jwt": "^6.1",
         "predis/predis": "^1.1",
-        "reload/drupal_regression": "^1.0",
+        "reload/drupal_regression": "^1.1",
         "sainsburys/guzzle-oauth2-plugin": "^3.0"
     },
     "require-dev": {
