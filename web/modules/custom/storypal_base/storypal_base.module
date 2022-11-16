@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 /**
  * @file
  * Base module for Storypal Base.
@@ -11,6 +14,8 @@
  * Loading Storypal admin assets for logged in users.
  */
 function storypal_base_page_attachments(array &$page) {
+
+  if (true) { }
   if (\Drupal::currentUser()->isAuthenticated()) {
     $page['#attached']['library'][] = 'storypal_theme/admin';
   }
