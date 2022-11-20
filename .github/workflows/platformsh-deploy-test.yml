@@ -5,8 +5,9 @@ permissions: write-all
 
 jobs:
   platformsh-deploy-test:
-    uses: reload/workflow-platformsh-deploy-status/.github/workflows/platformsh-deploy-test.yml@main
-    with:
-      PLATFORMSH_ID: ppobdkgor7fo6
-    secrets:
-      PLATFORMSH_KEY: ${{ secrets.DAIS_PLATFORMSH_KEY }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: reload/action-platformsh-deploy-status@v2
+      with:
+        PLATFORMSH_ID: ppobdkgor7fo6
+        PLATFORMSH_KEY: ${{ secrets.DAIS_PLATFORMSH_KEY }}
