@@ -7,7 +7,7 @@ jobs:
   platformsh-deploy-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: reload/action-platformsh-deploy-status@v2
+    - uses: reload/action-platformsh-url@fix-when-environment-not-ready
       with:
         PLATFORMSH_ID: ppobdkgor7fo6
         PLATFORMSH_KEY: ${{ secrets.DAIS_PLATFORMSH_KEY }}
