@@ -30,9 +30,9 @@
     "watch": "concurrently 'npm:js:watch' 'npm:css:watch' 'npm:images:watch' 'npm:fonts:watch' -c 'yellow,magenta,blue,cyan'",
     "serve": "serve $npm_package_config_themepath/dist/",
     "start": "npm run watch",
-    "storybook-80": "start-storybook --config-dir $npm_package_config_themepath/.storybook --port 80",
-    "storybook": "start-storybook --config-dir $npm_package_config_themepath/.storybook",
-    "build-storybook": "build-storybook --config-dir $npm_package_config_themepath/.storybook"
+    "storybook-80": "start-storybook --config-dir $npm_package_config_themepath/.storybook --port 80 --webpack-stats-json",
+    "storybook": "start-storybook --config-dir $npm_package_config_themepath/.storybook --webpack-stats-json",
+    "build-storybook": "build-storybook --config-dir $npm_package_config_themepath/.storybook --webpack-stats-json"
   },
   "devDependencies": {
     "@reloaddk/daft": "^1.2.2",
