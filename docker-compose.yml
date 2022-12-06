@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    image: reload/drupal-apache-fpm:latest
+    image: ghcr.io/reload/drupal-apache-fpm:latest
     ports:
       - '80'
       - '443'
@@ -18,7 +18,7 @@ services:
     working_dir: /var/www
 
   fpm:
-    image: reload/drupal-php7-fpm:7.4
+    image: ghcr.io/reload/docker-drupal-php7-fpm:7.4
     ports:
       - '9000'
     depends_on:

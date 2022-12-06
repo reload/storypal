@@ -11,6 +11,9 @@ import './drupal.js';
 
 import '../dist/js/storypal_theme.polyfills.js';
 
+//Remove twig cahche from storybook
+Twig.cache(false);
+
 // Add the filters to Twig instance.
 twigDrupal(Twig);
 
