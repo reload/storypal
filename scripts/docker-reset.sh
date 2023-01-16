@@ -24,13 +24,8 @@ if [[ $DORY ]]; then
     dory up
 fi
 
-if [[ $(docker ps -a -q --filter "name=$PROJECT_NAME") ]]; then
-  # Clear all running containers.
-  echoc "*** Removing existing containers"
-
-  docker rm -f $(docker ps -a -q --filter "name=$PROJECT_NAME")
-  docker-compose down --volumes
-fi
+(docker-compose down --remove-orphans || true)
+(docker-compose down --volumes || true)
 
 # Start up containers in the background and continue immediately
 echoc "*** Starting new containers"
