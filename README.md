@@ -33,8 +33,10 @@ You could take the database from this project, and build from that.
 That means you'll have to be added to the StoryPal project, so you can export the database using:
 
 ```
-platform db:dump -e main -p ppobdkgor7fo6 -d ./
+platform db:dump -e main -p ndwh3lq2xnuyg -d ./
 ```
+
+A (possibly outdated) backup is also [available in the repo at docker/init.sql](./docker/init.sql)
 
 #### OPTION 2 (ALTERNATIVE): Create your own installation
 
@@ -96,7 +98,7 @@ docker-compose exec web sh -c "drush cex -y"
     - Get this token under "Manage" > "Configure" in [Chromatic.com](https://chromatic.com)
   - `DAIS_PLATFORMSH_ID`
     - The ID of the platform.sh project
-    - Storypal example: `ppobdkgor7fo6`
+    - Storypal example: `ndwh3lq2xnuyg`
   - `DAIS_PLATFORMSH_KEY`
     - Login to [console.platform.sh](https://console.platform.sh) as the Reload user
     - "My Profile" > "API Tokens" > "Create API token"

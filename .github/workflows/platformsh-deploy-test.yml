@@ -9,5 +9,5 @@ jobs:
     steps:
       - uses: reload/action-platformsh-deploy-status@main
         with:
-          PLATFORMSH_ID: ppobdkgor7fo6
+          PLATFORMSH_ID: ndwh3lq2xnuyg
           PLATFORMSH_KEY: ${{ secrets.DAIS_PLATFORMSH_KEY }}
