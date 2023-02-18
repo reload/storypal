@@ -34,7 +34,7 @@ docker-compose up --build -d --remove-orphans
 
 # Perform the drupal-specific reset
 echoc "*** Resetting Drupal"
-"${SCRIPT_DIR}/site-reset.sh"
+#"${SCRIPT_DIR}/site-reset.sh"
 
 echo "=================="
 

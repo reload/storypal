@@ -59,7 +59,7 @@
         "drupal/gzip_html": "^1.2",
         "drupal/jquery_ui_accordion": "^1.1",
         "drupal/jquery_ui_multiselect_widget": "1.x-dev@dev",
-        "drupal/linkit": "^5",
+        "drupal/linkit": "6.0.x-dev",
         "drupal/media_library_edit": "^2.1",
         "drupal/metatag": "^1.19",
         "drupal/paragraphs": "^1.12",
@@ -164,16 +164,17 @@
                 "3269308: 'Add media' button is too general": "https://www.drupal.org/files/issues/2022-03-13/3269308-media_library_better_add_label_9-3.patch"
             },
             "drupal/cookiebot": {
-                "3271014: Async causes major issues in Safari": "https://www.drupal.org/files/issues/2022-03-22/cookiebot-no-async.patch"
+                "3271014: Async causes major issues in Safari": "https://www.drupal.org/files/issues/2022-12-19/3271014_no-async.patch"
             },
             "drupal/jquery_ui_multiselect_widget": {
                 "2941549: Rewrite the Drupal 8/9 branch": "https://www.drupal.org/files/issues/2021-10-14/2941549_rewrite-d8d9-version.patch"
             },
             "drupal/field_group": {
-                "3205504: Add support for #description_display for container types that support it": "https://www.drupal.org/files/issues/2021-08-24/3205504-6.field_group_description_display.patch"
+                "3205504: Add support for #description_display for container types that support it": "https://www.drupal.org/files/issues/2022-10-27/3205504-20.patch"
             },
             "drupal/linkit": {
-                "2712951: Linkit for Link field": "https://www.drupal.org/files/issues/2022-02-09/2712951-274.patch"
+                "2712951: Linkit for Link field": "https://www.drupal.org/files/issues/2022-02-09/2712951-274.patch",
+                "3232190: CKEditor 5 readiness": "https://www.drupal.org/files/issues/2022-12-14/3232190-113.patch"
             }
         }
     }
